@@ -48,7 +48,7 @@ export default function VideoComponent(props: any) {
       <TouchableOpacity
         onPress={() => togglePlaying}
         style={{
-          width: "70%",
+          width: "90%",
           padding: 16,
           marginTop: 8,
           marginBottom: high / 42.7,
