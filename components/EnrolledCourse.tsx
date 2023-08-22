@@ -10,7 +10,7 @@ import { heightPercentageToDP } from "../lib/ResonsiveDimesions";
 const wid = Dimensions.get("window").width;
 const high = Dimensions.get("window").height;
 const shadow = generateBoxShadowStyle(-2, 4, "#171717", 0.2, 3, 4, "#171717");
-const btnshadow = generateBoxShadowStyle(
+export const btnshadow = generateBoxShadowStyle(
   -2,
   4,
   "#171717",

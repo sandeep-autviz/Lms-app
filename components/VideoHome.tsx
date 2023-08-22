@@ -107,6 +107,7 @@ export default function VideoHome(props: any) {
           play={playing}
           videoId={getVideoId(fileName)}
           onChangeState={onStateChange}
+          //   initialPlayerParams={{ controls: false }}
         />
         {fullScreen ? (
           <View
