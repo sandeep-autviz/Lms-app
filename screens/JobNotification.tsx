@@ -22,7 +22,7 @@ export default function JobNotification(props: any) {
   const [jobData, SetJobData] = useState<any>([]);
   const [isCollapsed, setIsCollapsed] = useState(true);
 
-   function extractInnerText(htmlString: string) {
+  function extractInnerText(htmlString: string) {
     const strippedText = htmlString.replace(/<[^>]+>/g, "");
     return strippedText;
   }
@@ -85,9 +85,9 @@ export default function JobNotification(props: any) {
         marginBottom: high / 8.68,
       }}
     >
-      {jobData.map((data: any) => {
+      {jobData.map((data: any, index: number) => {
         return (
-          <NotificationBox data={data} />
+          <NotificationBox data={data} key={index} />
           // <TouchableOpacity
           //   key={Math.random() * 100}
           //   onPress={() => {

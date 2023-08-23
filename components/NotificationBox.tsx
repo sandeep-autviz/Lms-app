@@ -17,15 +17,7 @@ export default function NotificationBox({ data }) {
   }
   console.log(data.description.length, "dis length");
   return (
-    <TouchableOpacity
-      key={Math.random() * 100}
-      onPress={() => {
-        !data.link || data.link == null
-          ? alert("Link Not Available")
-          : Linking.openURL(data.link);
-      }}
-      style={styles.topicCntr}
-    >
+    <TouchableOpacity key={Math.random() * 100} style={styles.topicCntr}>
       <View
         style={{
           alignSelf: "flex-start",
@@ -72,15 +64,20 @@ export default function NotificationBox({ data }) {
             {isCollapsed ? "Read more" : "Read less"}
           </Text>
         )}
-        <View>
+        <View style={{ flex: 1, flexDirection: "row" }}>
           <TouchableOpacity
-            onPress={() => setIsCollapsed((s) => !s)}
+            onPress={() => {
+              !data.notesUrl || data.notesUrl == null
+                ? alert("Link Not Available")
+                : Linking.openURL(data.notesUrl);
+            }}
             style={{
               backgroundColor: "#319EAE",
               borderRadius: 20,
+              marginRight: 10,
               marginBottom: 10,
               marginTop: 10,
-              width: wid / 4,
+              width: wid / 5.5,
               height: high / 30,
               alignItems: "center",
               justifyContent: "center",
@@ -90,13 +87,17 @@ export default function NotificationBox({ data }) {
             <Text style={{ color: "white" }}>View</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => setIsCollapsed((s) => !s)}
+            onPress={() => {
+              !data.link || data.link == null
+                ? alert("Link Not Available")
+                : Linking.openURL(data.link);
+            }}
             style={{
               backgroundColor: "#319EAE",
               borderRadius: 20,
               marginBottom: 10,
               marginTop: 10,
-              width: wid / 4,
+              width: wid / 5.5,
               height: high / 30,
               alignItems: "center",
               justifyContent: "center",
@@ -146,7 +147,7 @@ export default function NotificationBox({ data }) {
           </Text>
         </View>
       </View>
-      <AntDesign name="right" size={24} color="black" />
+      {/* <AntDesign name="right" size={24} color="black" /> */}
     </TouchableOpacity>
   );
 }
