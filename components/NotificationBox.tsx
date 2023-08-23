@@ -15,6 +15,7 @@ export default function NotificationBox({ data }) {
     const strippedText = htmlString.replace(/<[^>]+>/g, "");
     return strippedText;
   }
+  console.log(data.description.length, "dis length");
   return (
     <TouchableOpacity
       key={Math.random() * 100}
@@ -48,7 +49,7 @@ export default function NotificationBox({ data }) {
             {extractInnerText(data.description)}
           </Text>
         </Collapsible>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => setIsCollapsed((s) => !s)}
           style={{
             backgroundColor: "#319EAE",
@@ -61,9 +62,58 @@ export default function NotificationBox({ data }) {
             justifyContent: "center",
             ...btnshadow,
           }}
+        > */}
+
+        {data.description.length > 55 && (
+          <Text
+            onPress={() => setIsCollapsed((s) => !s)}
+            style={{ color: "black" }}
+          >
+            {isCollapsed ? "Read more" : "Read less"}
+          </Text>
+        )}
+        <View>
+          <TouchableOpacity
+            onPress={() => setIsCollapsed((s) => !s)}
+            style={{
+              backgroundColor: "#319EAE",
+              borderRadius: 20,
+              marginBottom: 10,
+              marginTop: 10,
+              width: wid / 4,
+              height: high / 30,
+              alignItems: "center",
+              justifyContent: "center",
+              ...btnshadow,
+            }}
+          >
+            <Text style={{ color: "white" }}>View</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => setIsCollapsed((s) => !s)}
+            style={{
+              backgroundColor: "#319EAE",
+              borderRadius: 20,
+              marginBottom: 10,
+              marginTop: 10,
+              width: wid / 4,
+              height: high / 30,
+              alignItems: "center",
+              justifyContent: "center",
+              ...btnshadow,
+            }}
+          >
+            <Text style={{ color: "white" }}>Apply</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* <Text
+          onPress={() => setIsCollapsed((s) => !s)}
+          style={{ color: "black" }}
         >
-          <Text style={{ color: "white" }}>Read more</Text>
-        </TouchableOpacity>
+          Read more
+        </Text> */}
+        {/* </TouchableOpacity> */}
         <View
           style={{
             flexDirection: "row",
