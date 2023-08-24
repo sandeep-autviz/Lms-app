@@ -41,12 +41,12 @@ export default function VideoHome(props: any) {
         ? `${detail.trim().slice(0, 174)}`
         : `${detail.trim()}`,
   };
-  console.log(getVideoId(fileName), "filename");
 
   function onFullScreen() {
     console.log(" full screen");
     setFullScreen((s) => !s);
   }
+  console.log(fullScreen, "iam");
   return (
     <TouchableOpacity
       onPress={() => togglePlaying}
@@ -109,34 +109,22 @@ export default function VideoHome(props: any) {
           onChangeState={onStateChange}
           //   initialPlayerParams={{ controls: false }}
         />
-        {fullScreen ? (
-          <View
-            // TouchableOpacity to "steal" taps
-            // absolutely positioned to the top
-            // height must be adjusted to
-            // just cover the top 3 dots
-            style={{
-              backgroundColor: "red",
-              borderColor: "red",
-              top: 0,
-              height: 90,
-              width: "100%",
-              position: "absolute",
-            }}
-          />
-        ) : (
-          <TouchableOpacity
-            // TouchableOpacity to "steal" taps
-            // absolutely positioned to the top
-            // height must be adjusted to
-            // just cover the top 3 dots
-            style={{
-              top: 0,
-              height: 50,
-              width: "100%",
-              position: "absolute",
-            }}
-          />
+        <TouchableOpacity
+          // TouchableOpacity to "steal" taps
+          // absolutely positioned to the top
+          // height must be adjusted to
+          // just cover the top 3 dots
+          style={{
+            top: 0,
+            height: 50,
+            width: "100%",
+            position: "absolute",
+          }}
+        />
+        {fullScreen && (
+          <View style={styles.overlay}>
+            <Text>hello</Text>
+          </View>
         )}
       </View>
 
@@ -174,6 +162,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   image: {
     width: wid / 1.2,

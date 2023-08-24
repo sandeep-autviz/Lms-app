@@ -43,6 +43,9 @@ export default function VideoComponent(props: any) {
     console.log(" full screen");
     setFullScreen((s) => !s);
   }
+
+  console.log(fullScreen, "fullscreen");
+
   return (
     <View>
       <TouchableOpacity
@@ -100,35 +103,20 @@ export default function VideoComponent(props: any) {
             videoId={getVideoId(fileName)}
             onChangeState={onStateChange}
           />
-          {fullScreen ? (
-            <View
-              // TouchableOpacity to "steal" taps
-              // absolutely positioned to the top
-              // height must be adjusted to
-              // just cover the top 3 dots
-              style={{
-                backgroundColor: "red",
-                borderColor: "red",
-                top: 0,
-                height: 90,
-                width: "100%",
-                position: "absolute",
-              }}
-            />
-          ) : (
-            <TouchableOpacity
-              // TouchableOpacity to "steal" taps
-              // absolutely positioned to the top
-              // height must be adjusted to
-              // just cover the top 3 dots
-              style={{
-                top: 0,
-                height: 50,
-                width: "100%",
-                position: "absolute",
-              }}
-            />
-          )}
+          <View
+            // TouchableOpacity to "steal" taps
+            // absolutely positioned to the top
+            // height must be adjusted to
+            // just cover the top 3 dots
+            style={{
+              backgroundColor: "red",
+              borderColor: "red",
+              top: 0,
+              height: 90,
+              width: "100%",
+              position: "absolute",
+            }}
+          />
         </View>
 
         <View style={{ padding: 0, margin: 0, backgroundColor: "#FAFAFB" }}>
