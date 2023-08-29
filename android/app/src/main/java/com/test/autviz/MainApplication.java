@@ -1,5 +1,4 @@
 package com.test.autviz;
-
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;

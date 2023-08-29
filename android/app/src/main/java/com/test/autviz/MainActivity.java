@@ -1,5 +1,4 @@
 package com.test.autviz;
-
 import android.os.Build;
 import android.os.Bundle;
 

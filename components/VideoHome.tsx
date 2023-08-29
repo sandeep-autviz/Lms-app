@@ -6,6 +6,7 @@ import {
   View,
   TouchableOpacity,
   Image,
+  Pressable,
 } from "react-native";
 import YoutubeIframe from "react-native-youtube-iframe";
 
@@ -19,7 +20,7 @@ import { heightPercentageToDP } from "../lib/ResonsiveDimesions";
 import { generateBoxShadowStyle } from "../lib/generateBoxShadow";
 
 export default function VideoHome(props: any) {
-  const [isVideoResume, setisVideoResume] = useState<boolean>(false);
+  // const [isVideoResume, setisVideoResume] = useState<boolean>(false);
   const { description, image, title, fileName, creationTime } = props.item;
   let detail = description + "";
   const [playing, setPlaying] = useState(false);
@@ -82,10 +83,6 @@ export default function VideoHome(props: any) {
         <Text allowFontScaling={false} style={styles.cardText}>
           {title}
         </Text>
-        {/* <Image
-          source={require("../assets/images/dots.png")}
-          style={{ alignSelf: "center" }}
-        /> */}
       </View>
       <Text
         allowFontScaling={false}
@@ -100,32 +97,38 @@ export default function VideoHome(props: any) {
       </Text>
 
       <View>
-        <YoutubeIframe
-          onFullScreenChange={onFullScreen}
-          height={high / 4}
-          webViewStyle={{ opacity: 0.99 }}
-          play={playing}
-          videoId={getVideoId(fileName)}
-          onChangeState={onStateChange}
-          initialPlayerParams={{ controls: false }}
-        />
-        <TouchableOpacity
-          // TouchableOpacity to "steal" taps
-          // absolutely positioned to the top
-          // height must be adjusted to
-          // just cover the top 3 dots
-          style={{
-            top: 0,
-            height: 50,
-            width: "100%",
-            position: "absolute",
+        <Pressable
+          onPress={() => {
+            // handle or ignore
           }}
-        />
-        {fullScreen && (
-          <View style={styles.overlay}>
-            <Text>hello</Text>
+          onLongPress={() => {
+            // handle or ignore
+          }}
+        >
+          <View>
+            <YoutubeIframe
+              onFullScreenChange={onFullScreen}
+              height={high / 4}
+              webViewStyle={{ opacity: 0.99 }}
+              play={playing}
+              videoId={getVideoId(fileName)}
+              onChangeState={onStateChange}
+              // initialPlayerParams={{ controls: false }}
+            />
+            <TouchableOpacity
+              // TouchableOpacity to "steal" taps
+              // absolutely positioned to the top
+              // height must be adjusted to
+              // just cover the top 3 dots
+              style={{
+                top: 0,
+                height: 50,
+                width: "100%",
+                position: "absolute",
+              }}
+            />
           </View>
-        )}
+        </Pressable>
       </View>
 
       <View style={{ padding: 0, margin: 0, backgroundColor: "#FAFAFB" }}>

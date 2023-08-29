@@ -41,20 +41,6 @@ export default function NotificationBox({ data }) {
             {extractInnerText(data.description)}
           </Text>
         </Collapsible>
-        {/* <TouchableOpacity
-          onPress={() => setIsCollapsed((s) => !s)}
-          style={{
-            backgroundColor: "#319EAE",
-            borderRadius: 20,
-            marginBottom: 10,
-            marginTop: 10,
-            width: wid / 4,
-            height: high / 30,
-            alignItems: "center",
-            justifyContent: "center",
-            ...btnshadow,
-          }}
-        > */}
 
         {data.description.length > 55 && (
           <Text
@@ -108,13 +94,6 @@ export default function NotificationBox({ data }) {
           </TouchableOpacity>
         </View>
 
-        {/* <Text
-          onPress={() => setIsCollapsed((s) => !s)}
-          style={{ color: "black" }}
-        >
-          Read more
-        </Text> */}
-        {/* </TouchableOpacity> */}
         <View
           style={{
             flexDirection: "row",

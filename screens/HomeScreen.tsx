@@ -1,4 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { ViewPropTypes } from "deprecated-react-native-prop-types";
+
 import {
   Dimensions,
   FlatList,
@@ -7,15 +9,15 @@ import {
   View,
   Text,
 } from "react-native";
+
 import { ActivityIndicator } from "react-native-paper";
+import YouTube, { YouTubeStandaloneAndroid } from "react-native-youtube";
+
 import * as SecureStore from "expo-secure-store";
 import HeaderNav from "../components/HeaderNav";
-import Video from "../components/Video";
 import EnrolledCourse from "../components/EnrolledCourse";
 import axios from "axios";
-import VideoCard from "../components/VideoCard";
 import { useStateContext } from "./Context/ContextProvider";
-import { getVideoId } from "../utils/Logics";
 import { baseUrl, KEYS } from "../utils";
 import { StackActions } from "@react-navigation/native";
 import Banner from "../components/Banner";
@@ -26,9 +28,13 @@ import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { Platform } from "react-native";
 import VideoHome from "../components/VideoHome";
+import VideoPlayer from "../components/VideoPlayer";
+import OldVideo from "../components/OldVideo";
+
 SplashScreen.preventAutoHideAsync().then((result) =>
   console.log(`SplashScreen.preventAutoHideAsync() ${result}`)
 );
+
 const wid = Dimensions.get("window").width;
 const high = Dimensions.get("window").height;
 function HomeScreen({ route, navigation }: any) {
@@ -40,7 +46,6 @@ function HomeScreen({ route, navigation }: any) {
   );
 
   const [hybridCourseData, setHybridCourseData] = useState<any[] | null>(null);
-  const [feedVidForHome, setFeedVidForHome] = useState<any>(null);
   const [promotionData, setPromotionData] = useState<any[] | null>(null);
   const [feedFullData, setFeedFullData] = useState<any>();
   const [allMockTestData, setAllMockTestData] = useState<any[] | null>(null);
@@ -137,6 +142,7 @@ function HomeScreen({ route, navigation }: any) {
           "Abp-TenantId": "1",
         },
       };
+
       return axios.get(
         `${baseUrl}/api/services/app/CourseManagementAppServices/GetAllDataBasedOnCategory?categoryId=-1&courseType=Mock`,
         config
@@ -256,14 +262,6 @@ function HomeScreen({ route, navigation }: any) {
     allData();
   }, [refresh]);
 
-  console.log(
-    allMockTestData,
-    "mocktest data",
-    hybridCourseData,
-    "hybrid data"
-  );
-  console.log("promotion", promotionData);
-  console.log("ongoingVideocourse", onGoingVideoCoures);
   return (
     <View style={{ flex: 1, backgroundColor: "#F7F7F7" }}>
       <>
@@ -291,10 +289,12 @@ function HomeScreen({ route, navigation }: any) {
                   )}
                 />
               </View>
+
               <View style={[styles.FAFAFBbackgoundcolor, { width: wid }]}>
                 <Text allowFontScaling={false} style={styles.textStyle}>
                   Ongoing Video Courses
                 </Text>
+
                 {onGoingVideoCoures ? (
                   <View
                     style={[
@@ -425,8 +425,8 @@ function HomeScreen({ route, navigation }: any) {
               >
                 Free Videos
               </Text>
-
-              {/* {feedFullData ? (
+              {/* 
+              {feedFullData ? (
                 <Fragment>
                   {feedFullData.map((data1: any, idx: number) => {
                     if (data1.type == "Video") {
@@ -435,24 +435,24 @@ function HomeScreen({ route, navigation }: any) {
                   })}
                 </Fragment>
               ) : (
-                // <View style={styles.freeVideoScroll}>
-                //   <FlatList
-                //     showsHorizontalScrollIndicator={false}
-                //     horizontal
-                //     data={feedVidForHome}
-                //     renderItem={({ item, index }) => (
-                //       <Video item={item} key={index} />
-                //     )}
-                //   />
-                // </View>
+                <View style={styles.freeVideoScroll}>
+                   <FlatList
+                     showsHorizontalScrollIndicator={false}
+                     horizontal
+                     data={feedVidForHome}
+                     renderItem={({ item, index }) => (
+                       <Video item={item} key={index} />
+                     )}
+                   />
+                 </View>
                 <View style={styles.noAvailableStyle}>
                   <Text style={styles.noAvailableTextStyle}>
                     No Course has been purchased
                   </Text>
                 </View>
-              )} */}
+              )}  */}
 
-              {feedFullData ? (
+            {feedFullData ? (
                 <View
                   style={{
                     left: wid / 12.8,
@@ -489,16 +489,17 @@ const styles = StyleSheet.create({
     top: high / 2,
     left: wid / 2.1,
   },
+
   loaderContainer: {
     backgroundColor: "transparent",
     alignSelf: "center",
     justifyContent: "center",
     height: high,
   },
-
   onGoingVideoScroll: {
     backgroundColor: "#FAFAFB",
   },
+
   onGoingVideoinnnerScroll: {
     left: wid / 12.8,
     flexDirection: "row",
@@ -518,12 +519,16 @@ const styles = StyleSheet.create({
   leftSpace: {
     left: wid / 12.8,
   },
+
   noAvailableStyle: {
     backgroundColor: "#FAFAFB",
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
     height: high / 14.3,
+  },
+  container: {
+    flex: 1,
   },
   noAvailableTextStyle: {
     fontFamily: "Poppins-Medium",
