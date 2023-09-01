@@ -1,31 +1,49 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
-import YouTube from "react-native-youtube";
-import { ViewPropTypes } from "deprecated-react-native-prop-types";
+import React, { Component } from "react";
+import { View } from "react-native";
+import Video from "react-native-video";
+import {
+  VideoPlayer,
+  DefaultMainControl,
+  DefaultBottomControlsBar,
+  videoId,
+} from "react_native_youtube_streamer";
 
-const VideoPlayer = () => {
-  return (
-    <ViewPropTypes style={styles.container}>
-      <YouTube
-        videoId="N18czV5tj5o"
-        play={true}
-        fullscreen={true}
-        loop={false}
-        apiKey="AIzaSyBUvxOUqaZWfuJ8i-5QlOLNmisWD7dcf58"
-        onReady={(e) => console.log("onReady", e)}
-        onChangeState={(e) => console.log("onChangeState", e)}
-        onChangeQuality={(e) => console.log("onChangeQuality", e)}
-        onError={(e) => console.log("onError", e)}
-      />
-    </ViewPropTypes>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+export default class App extends Component {
+  render() {
+    return (
+      <VideoPlayer
+        autoStart={false}
+        mainControl={(args) => <DefaultMainControl {...args} />}
+        bottomControl={(args) => <DefaultBottomControlsBar {...args} />}
+        videoId="tsPSBLX1GPg" //<-- youtube-video-id -->
+      >
+        {(args) =>
+          args.youtubeCustomUrl && (
+            <Video
+              ref={args.playerRef}
+              source={{
+                uri: args.youtubeCustomUrl,
+              }}
+              style={styles.backgroundVideo}
+              resizeMode="cover"
+              paused={args.videoPaused}
+              onLoad={args.onLoad}
+              onProgress={args.onProgress}
+              onEnd={args.onEnd}
+            />
+          )
+        }
+      </VideoPlayer>
+    );
+  }
+}
+var styles = StyleSheet.create({
+  backgroundVideo: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
     backgroundColor: "black",
   },
 });
-
-export default VideoPlayer;

@@ -1,6 +1,5 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { ViewPropTypes } from "deprecated-react-native-prop-types";
-
+import { Fragment, useEffect, useRef, useState } from "react";
+import React, { Component } from "react";
 import {
   Dimensions,
   FlatList,
@@ -11,7 +10,6 @@ import {
 } from "react-native";
 
 import { ActivityIndicator } from "react-native-paper";
-import YouTube, { YouTubeStandaloneAndroid } from "react-native-youtube";
 
 import * as SecureStore from "expo-secure-store";
 import HeaderNav from "../components/HeaderNav";
@@ -28,8 +26,6 @@ import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { Platform } from "react-native";
 import VideoHome from "../components/VideoHome";
-import VideoPlayer from "../components/VideoPlayer";
-import OldVideo from "../components/OldVideo";
 
 SplashScreen.preventAutoHideAsync().then((result) =>
   console.log(`SplashScreen.preventAutoHideAsync() ${result}`)
@@ -50,7 +46,10 @@ function HomeScreen({ route, navigation }: any) {
   const [feedFullData, setFeedFullData] = useState<any>();
   const [allMockTestData, setAllMockTestData] = useState<any[] | null>(null);
   const [freeVideoData, setFreeVideoData] = useState<null | any[]>(null);
-
+  const [videoId, setVideoId] = useState("JRLTtu_X8rQ&t=47s");
+  const [videoInfo, setVideoInfo] = useState(null);
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   useEffect(() => {
     console.log("home screen loading");
     SecureStore.getItemAsync("access_token").then((value: any) => {
@@ -222,9 +221,13 @@ function HomeScreen({ route, navigation }: any) {
         getAllHybridCourseResponse,
       ] = await Promise.all([
         getUserImage(access_token, userId),
+
         onGoingMockCourse(access_token),
+
         getOngoingVideoCourses(access_token),
+
         getAllPromotions(),
+
         onGoingHybridCourse(access_token),
       ]);
 
@@ -241,9 +244,13 @@ function HomeScreen({ route, navigation }: any) {
       );
 
       setHybridCourseData(getAllHybridCourseResponse?.data.result);
+
       setOnGoingVideoCoures(getOngoingVideoCoursesResponse?.data.result);
+
       setIsLoading(false);
+
       getUserData(access_token);
+
       getVideoContent();
     } catch (error) {
       await SplashScreen.hideAsync().then((result) =>
@@ -274,7 +281,7 @@ function HomeScreen({ route, navigation }: any) {
           <>
             <HeaderNav setIsLoading={setIsLoading} name={"DashBoard"} />
             <ScrollView style={styles.onGoingVideoScroll}>
-              <View style={styles.FAFAFBbackgoundcolor}>
+              {/* <View style={styles.FAFAFBbackgoundcolor}>
                 <FlatList
                   style={{ left: wid / 12.8 }}
                   horizontal
@@ -288,7 +295,7 @@ function HomeScreen({ route, navigation }: any) {
                     />
                   )}
                 />
-              </View>
+              </View> */}
 
               <View style={[styles.FAFAFBbackgoundcolor, { width: wid }]}>
                 <Text allowFontScaling={false} style={styles.textStyle}>
@@ -452,7 +459,7 @@ function HomeScreen({ route, navigation }: any) {
                 </View>
               )}  */}
 
-            {feedFullData ? (
+              {feedFullData ? (
                 <View
                   style={{
                     left: wid / 12.8,
@@ -495,6 +502,14 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "center",
     height: high,
+  },
+  backgroundVideo: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    backgroundColor: "black",
   },
   onGoingVideoScroll: {
     backgroundColor: "#FAFAFB",
