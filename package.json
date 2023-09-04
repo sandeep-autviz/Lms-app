@@ -66,7 +66,7 @@
     "react-native-toast-message": "^2.1.5",
     "react-native-web": "~0.18.7",
     "react-native-web-webview": "^1.0.2",
-    "react-native-webview": "^11.23.0",
+    "react-native-webview": "^11.26.1",
     "react-native-youtube-iframe": "^2.2.2",
     "recyclerlistview": "^4.2.0",
     "uuid": "^9.0.0",
