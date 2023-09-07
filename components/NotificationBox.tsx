@@ -15,7 +15,7 @@ export default function NotificationBox({ data }) {
     const strippedText = htmlString.replace(/<[^>]+>/g, "");
     return strippedText;
   }
-  console.log(data.description.length, "dis length");
+  console.log(data.notesUrl, "dis length");
   return (
     <TouchableOpacity key={Math.random() * 100} style={styles.topicCntr}>
       <View

@@ -18,6 +18,7 @@ const shadow = generateBoxShadowStyle(-2, 4, "#171717", 0.2, 3, 4, "#171717");
 import RenderHtml from "react-native-render-html";
 import { heightPercentageToDP } from "../lib/ResonsiveDimesions";
 import { generateBoxShadowStyle } from "../lib/generateBoxShadow";
+import CustomPlayer from "./CustomPlayer";
 
 export default function VideoHome(props: any) {
   // const [isVideoResume, setisVideoResume] = useState<boolean>(false);
@@ -47,7 +48,7 @@ export default function VideoHome(props: any) {
     console.log(" full screen");
     setFullScreen((s) => !s);
   }
-  console.log(fullScreen, "iam");
+  console.log(fullScreen, "i am");
   return (
     <TouchableOpacity
       onPress={() => togglePlaying}
@@ -96,39 +97,30 @@ export default function VideoHome(props: any) {
         {trimDate(creationTime)}
       </Text>
 
-      <View>
-        <Pressable
-          onPress={() => {
-            // handle or ignore
-          }}
-          onLongPress={() => {
-            // handle or ignore
-          }}
-        >
-          <View>
-            <YoutubeIframe
-              onFullScreenChange={onFullScreen}
-              height={high / 4}
-              webViewStyle={{ opacity: 0.99 }}
-              play={playing}
-              videoId={getVideoId(fileName)}
-              onChangeState={onStateChange}
-              // initialPlayerParams={{ controls: false }}
-            />
-            <TouchableOpacity
-              // TouchableOpacity to "steal" taps
-              // absolutely positioned to the top
-              // height must be adjusted to
-              // just cover the top 3 dots
-              style={{
-                top: 0,
-                height: 50,
-                width: "100%",
-                position: "absolute",
-              }}
-            />
-          </View>
-        </Pressable>
+      <View style={{ width: 300, height: 200 }}>
+        <View>
+          <YoutubeIframe
+            onFullScreenChange={onFullScreen}
+            height={high / 4}
+            webViewStyle={{ opacity: 0.99 }}
+            play={playing}
+            videoId={getVideoId(fileName)}
+            onChangeState={onStateChange}
+            // initialPlayerParams={{ controls: false }}
+          />
+          <TouchableOpacity
+            // TouchableOpacity to "steal" taps
+            // absolutely positioned to the top
+            // height must be adjusted to
+            // just cover the top 3 dots
+            style={{
+              top: 0,
+              height: 50,
+              width: "100%",
+              position: "absolute",
+            }}
+          />
+        </View>
       </View>
 
       <View style={{ padding: 0, margin: 0, backgroundColor: "#FAFAFB" }}>

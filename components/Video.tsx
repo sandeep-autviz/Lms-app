@@ -109,7 +109,7 @@ export default function VideoComponent(props: any) {
             // height must be adjusted to
             // just cover the top 3 dots
             style={{
-              backgroundColor: "red",
+              // backgroundColor: "red",
               borderColor: "red",
               top: 0,
               height: 90,

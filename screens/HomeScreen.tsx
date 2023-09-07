@@ -26,6 +26,7 @@ import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { Platform } from "react-native";
 import VideoHome from "../components/VideoHome";
+import CustomPlayer from "../components/CustomPlayer";
 
 SplashScreen.preventAutoHideAsync().then((result) =>
   console.log(`SplashScreen.preventAutoHideAsync() ${result}`)
@@ -58,6 +59,7 @@ function HomeScreen({ route, navigation }: any) {
       }
     });
   }, []);
+
   const getUserImage = (access_token: string, userId: string) => {
     const config = {
       headers: {
@@ -88,9 +90,9 @@ function HomeScreen({ route, navigation }: any) {
         Authorization: `Bearer ${token}`,
       },
     };
+
     try {
       const { data } = await axios.request(config);
-
       if (!data.result.user) {
         navigation.dispatch(StackActions.replace("SignIn"));
       }
@@ -129,6 +131,7 @@ function HomeScreen({ route, navigation }: any) {
       console.log(error);
     }
   };
+
   const getAllPromotions = () =>
     axios.get(`${baseUrl}/api/services/app/Promotion/GetAllPromotions`);
 
@@ -160,6 +163,7 @@ function HomeScreen({ route, navigation }: any) {
           "Abp-TenantId": "1",
         },
       };
+
       return axios.get(
         `${baseUrl}/api/services/app/CourseManagementAppServices/GetAllDataBasedOnCategory?categoryId=-1&courseType=Hybrid`,
         config
@@ -168,6 +172,7 @@ function HomeScreen({ route, navigation }: any) {
       console.log(error, "upcomingDataResonse");
     }
   };
+
   const FeedData = async (token: any) => {
     var axios = require("axios");
     var data = "";
@@ -281,7 +286,7 @@ function HomeScreen({ route, navigation }: any) {
           <>
             <HeaderNav setIsLoading={setIsLoading} name={"DashBoard"} />
             <ScrollView style={styles.onGoingVideoScroll}>
-              {/* <View style={styles.FAFAFBbackgoundcolor}>
+              <View style={styles.FAFAFBbackgoundcolor}>
                 <FlatList
                   style={{ left: wid / 12.8 }}
                   horizontal
@@ -295,7 +300,7 @@ function HomeScreen({ route, navigation }: any) {
                     />
                   )}
                 />
-              </View> */}
+              </View>
 
               <View style={[styles.FAFAFBbackgoundcolor, { width: wid }]}>
                 <Text allowFontScaling={false} style={styles.textStyle}>
@@ -426,6 +431,7 @@ function HomeScreen({ route, navigation }: any) {
                 )}
               </View>
 
+              {/* <VideoTest /> */}
               <Text
                 allowFontScaling={false}
                 style={[styles.textStyle, { marginTop: high / 85.4 }]}
@@ -483,6 +489,15 @@ function HomeScreen({ route, navigation }: any) {
                   </Text>
                 </View>
               )}
+              <View
+                renderToHardwareTextureAndroid={true}
+                style={{
+                  opacity: 0.99,
+                  overflow: "hidden",
+                  height: 200,
+                  width: 250,
+                }}
+              ></View>
             </ScrollView>
           </>
         )}
@@ -496,7 +511,10 @@ const styles = StyleSheet.create({
     top: high / 2,
     left: wid / 2.1,
   },
-
+  container: {
+    flex: 1,
+    width: 30,
+  },
   loaderContainer: {
     backgroundColor: "transparent",
     alignSelf: "center",
@@ -542,9 +560,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: high / 14.3,
   },
-  container: {
-    flex: 1,
-  },
+
   noAvailableTextStyle: {
     fontFamily: "Poppins-Medium",
     width: "100%",
