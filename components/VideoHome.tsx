@@ -8,7 +8,7 @@ import {
   Image,
 } from "react-native";
 import YoutubeIframe from "react-native-youtube-iframe";
-
+import Video from "react-native-video";
 import { Alert } from "react-native";
 import { trimDate, getVideoId } from "../utils/Logics";
 const wid = Dimensions.get("window").width;
@@ -17,6 +17,7 @@ const shadow = generateBoxShadowStyle(-2, 4, "#171717", 0.2, 3, 4, "#171717");
 import RenderHtml from "react-native-render-html";
 import { heightPercentageToDP } from "../lib/ResonsiveDimesions";
 import { generateBoxShadowStyle } from "../lib/generateBoxShadow";
+import NatVideo from "./NatVideo";
 
 export default function VideoHome(props: any) {
   const [isVideoResume, setisVideoResume] = useState<boolean>(false);
@@ -100,7 +101,9 @@ export default function VideoHome(props: any) {
       </Text>
 
       <View>
-        <YoutubeIframe
+        <NatVideo />
+
+        {/* <YoutubeIframe
           onFullScreenChange={onFullScreen}
           height={high / 4}
           webViewStyle={{ opacity: 0.99 }}
@@ -108,8 +111,8 @@ export default function VideoHome(props: any) {
           videoId={getVideoId(fileName)}
           onChangeState={onStateChange}
           initialPlayerParams={{ controls: false }}
-        />
-        <TouchableOpacity
+        /> */}
+        {/* <TouchableOpacity
           // TouchableOpacity to "steal" taps
           // absolutely positioned to the top
           // height must be adjusted to
@@ -120,7 +123,7 @@ export default function VideoHome(props: any) {
             width: "100%",
             position: "absolute",
           }}
-        />
+        /> */}
         {fullScreen && (
           <View style={styles.overlay}>
             <Text>hello</Text>
@@ -162,6 +165,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  backgroundVideo: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,

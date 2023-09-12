@@ -26,6 +26,7 @@ import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { Platform } from "react-native";
 import VideoHome from "../components/VideoHome";
+import NatVideo from "../components/NatVideo";
 SplashScreen.preventAutoHideAsync().then((result) =>
   console.log(`SplashScreen.preventAutoHideAsync() ${result}`)
 );
@@ -331,6 +332,7 @@ function HomeScreen({ route, navigation }: any) {
                   </View>
                 )}
               </View>
+              <NatVideo />
               <View style={[styles.FAFAFBbackgoundcolor, { width: wid }]}>
                 <Text
                   allowFontScaling={false}
