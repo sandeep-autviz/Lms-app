@@ -26,6 +26,7 @@ import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { Platform } from "react-native";
 import VideoHome from "../components/VideoHome";
+import { MyWebComponent } from "../components/MyWebComponent";
 SplashScreen.preventAutoHideAsync().then((result) =>
   console.log(`SplashScreen.preventAutoHideAsync() ${result}`)
 );
@@ -265,221 +266,198 @@ function HomeScreen({ route, navigation }: any) {
   console.log("promotion", promotionData);
   console.log("ongoingVideocourse", onGoingVideoCoures);
   return (
-    <View style={{ flex: 1, backgroundColor: "#F7F7F7" }}>
-      <>
-        <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
-        {isLoading === true ? (
-          <View style={styles.loaderContainer}>
-            <ActivityIndicator size="large" color="#319EAE" />
-          </View>
-        ) : (
-          <>
-            <HeaderNav setIsLoading={setIsLoading} name={"DashBoard"} />
-            <ScrollView style={styles.onGoingVideoScroll}>
-              <View style={styles.FAFAFBbackgoundcolor}>
-                <FlatList
-                  style={{ left: wid / 12.8 }}
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  data={promotionData}
-                  renderItem={({ item }) => (
-                    <Banner
-                      navigation={navigation}
-                      item={item}
-                      courseId={extractNumberFromURL(item.link)}
-                    />
-                  )}
-                />
-              </View>
-              <View style={[styles.FAFAFBbackgoundcolor, { width: wid }]}>
-                <Text allowFontScaling={false} style={styles.textStyle}>
-                  Ongoing Video Courses
-                </Text>
-                {onGoingVideoCoures ? (
-                  <View
-                    style={[
-                      styles.onGoingVideoinnnerScroll,
-                      { backgroundColor: "#F7F7F7" },
-                    ]}
-                  >
-                    <FlatList
-                      style={{ backgroundColor: "#F7F7F7" }}
-                      horizontal={true}
-                      showsHorizontalScrollIndicator={false}
-                      data={onGoingVideoCoures}
-                      renderItem={({ item, index }) => (
-                        <EnrolledCourse
-                          key={index}
-                          courseManagementId={item.id}
-                          imagePath={item.imagePath}
-                          name={item.name}
-                          detail={item.detail}
-                          navigation={navigation}
-                          isFree={item.price == 0 && true}
-                          isBuy={item.price == 0 ? true : item.isBuy}
-                          price={item.price}
-                          creationTime={item.creationTime}
-                        />
-                      )}
-                    />
-                  </View>
-                ) : (
-                  <View style={styles.noAvailableStyle}>
-                    <Text style={styles.noAvailableTextStyle}>
-                      No Course has been purchased
-                    </Text>
-                  </View>
-                )}
-              </View>
-              <View style={[styles.FAFAFBbackgoundcolor, { width: wid }]}>
-                <Text
-                  allowFontScaling={false}
-                  style={[styles.textStyle, { marginTop: high / 85.4 }]}
-                >
-                  Ongoing Mock Courses
-                </Text>
-                {allMockTestData ? (
-                  <View
-                    style={{
-                      left: wid / 12.8,
-                      flexDirection: "row",
-                      marginRight: wid / 45,
-                    }}
-                  >
-                    <FlatList
-                      data={allMockTestData}
-                      horizontal={true}
-                      showsHorizontalScrollIndicator={false}
-                      renderItem={({ item, index }) => (
-                        <EnrolledCourse
-                          key={index}
-                          courseManagementId={item.id}
-                          imagePath={item.imagePath}
-                          name={item.name}
-                          detail={item.detail}
-                          navigation={navigation}
-                          isFree={item.price == 0 && true}
-                          isBuy={item.price == 0 ? true : item.isBuy}
-                          price={item.price}
-                          creationTime={item.creationTime}
-                        />
-                      )}
-                    />
-                  </View>
-                ) : (
-                  <View style={styles.noAvailableStyle}>
-                    <Text style={styles.noAvailableTextStyle}>
-                      No Course has been purchased
-                    </Text>
-                  </View>
-                )}
-              </View>
+    // <View style={{ flex: 1, backgroundColor: "#F7F7F7" }}>
+    //   <>
+    //     <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
+    //     {isLoading === true ? (
+    //       <View style={styles.loaderContainer}>
+    //         <ActivityIndicator size="large" color="#319EAE" />
+    //       </View>
+    //     ) : (
+    //       <>
+    //         <HeaderNav setIsLoading={setIsLoading} name={"DashBoard"} />
+    //         <ScrollView style={styles.onGoingVideoScroll}>
+    //           <View style={styles.FAFAFBbackgoundcolor}>
+    //             <FlatList
+    //               style={{ left: wid / 12.8 }}
+    //               horizontal
+    //               showsHorizontalScrollIndicator={false}
+    //               data={promotionData}
+    //               renderItem={({ item }) => (
+    //                 <Banner
+    //                   navigation={navigation}
+    //                   item={item}
+    //                   courseId={extractNumberFromURL(item.link)}
+    //                 />
+    //               )}
+    //             />
+    //           </View>
+    //           <View style={[styles.FAFAFBbackgoundcolor, { width: wid }]}>
+    //             <Text allowFontScaling={false} style={styles.textStyle}>
+    //               Ongoing Video Courses
+    //             </Text>
+    //             {onGoingVideoCoures ? (
+    //               <View
+    //                 style={[
+    //                   styles.onGoingVideoinnnerScroll,
+    //                   { backgroundColor: "#F7F7F7" },
+    //                 ]}
+    //               >
+    //                 <FlatList
+    //                   style={{ backgroundColor: "#F7F7F7" }}
+    //                   horizontal={true}
+    //                   showsHorizontalScrollIndicator={false}
+    //                   data={onGoingVideoCoures}
+    //                   renderItem={({ item, index }) => (
+    //                     <EnrolledCourse
+    //                       key={index}
+    //                       courseManagementId={item.id}
+    //                       imagePath={item.imagePath}
+    //                       name={item.name}
+    //                       detail={item.detail}
+    //                       navigation={navigation}
+    //                       isFree={item.price == 0 && true}
+    //                       isBuy={item.price == 0 ? true : item.isBuy}
+    //                       price={item.price}
+    //                       creationTime={item.creationTime}
+    //                     />
+    //                   )}
+    //                 />
+    //               </View>
+    //             ) : (
+    //               <View style={styles.noAvailableStyle}>
+    //                 <Text style={styles.noAvailableTextStyle}>
+    //                   No Course has been purchased
+    //                 </Text>
+    //               </View>
+    //             )}
+    //           </View>
+    //           <View style={[styles.FAFAFBbackgoundcolor, { width: wid }]}>
+    //             <Text
+    //               allowFontScaling={false}
+    //               style={[styles.textStyle, { marginTop: high / 85.4 }]}
+    //             >
+    //               Ongoing Mock Courses
+    //             </Text>
+    //             {allMockTestData ? (
+    //               <View
+    //                 style={{
+    //                   left: wid / 12.8,
+    //                   flexDirection: "row",
+    //                   marginRight: wid / 45,
+    //                 }}
+    //               >
+    //                 <FlatList
+    //                   data={allMockTestData}
+    //                   horizontal={true}
+    //                   showsHorizontalScrollIndicator={false}
+    //                   renderItem={({ item, index }) => (
+    //                     <EnrolledCourse
+    //                       key={index}
+    //                       courseManagementId={item.id}
+    //                       imagePath={item.imagePath}
+    //                       name={item.name}
+    //                       detail={item.detail}
+    //                       navigation={navigation}
+    //                       isFree={item.price == 0 && true}
+    //                       isBuy={item.price == 0 ? true : item.isBuy}
+    //                       price={item.price}
+    //                       creationTime={item.creationTime}
+    //                     />
+    //                   )}
+    //                 />
+    //               </View>
+    //             ) : (
+    //               <View style={styles.noAvailableStyle}>
+    //                 <Text style={styles.noAvailableTextStyle}>
+    //                   No Course has been purchased
+    //                 </Text>
+    //               </View>
+    //             )}
+    //           </View>
 
-              <View style={[styles.FAFAFBbackgoundcolor, { width: wid }]}>
-                <Text
-                  allowFontScaling={false}
-                  style={[styles.textStyle, { marginTop: high / 85.4 }]}
-                >
-                  Ongoing Hybrid Courses
-                </Text>
-                {hybridCourseData ? (
-                  <View
-                    style={{
-                      left: wid / 12.8,
-                      flexDirection: "row",
-                      marginRight: wid / 45,
-                    }}
-                  >
-                    <FlatList
-                      data={hybridCourseData}
-                      horizontal={true}
-                      showsHorizontalScrollIndicator={false}
-                      renderItem={({ item, index }) => (
-                        <EnrolledCourse
-                          key={index}
-                          courseManagementId={item.id}
-                          imagePath={item.imagePath}
-                          name={item.name}
-                          detail={item.detail}
-                          navigation={navigation}
-                          isFree={item.price == 0 && true}
-                          isBuy={item.price == 0 ? true : item.isBuy}
-                          price={item.price}
-                          creationTime={item.creationTime}
-                        />
-                      )}
-                    />
-                  </View>
-                ) : (
-                  <View style={styles.noAvailableStyle}>
-                    <Text style={styles.noAvailableTextStyle}>
-                      No Course has been purchased
-                    </Text>
-                  </View>
-                )}
-              </View>
+    //           <View style={[styles.FAFAFBbackgoundcolor, { width: wid }]}>
+    //             <Text
+    //               allowFontScaling={false}
+    //               style={[styles.textStyle, { marginTop: high / 85.4 }]}
+    //             >
+    //               Ongoing Hybrid Courses
+    //             </Text>
+    //             {hybridCourseData ? (
+    //               <View
+    //                 style={{
+    //                   left: wid / 12.8,
+    //                   flexDirection: "row",
+    //                   marginRight: wid / 45,
+    //                 }}
+    //               >
+    //                 <FlatList
+    //                   data={hybridCourseData}
+    //                   horizontal={true}
+    //                   showsHorizontalScrollIndicator={false}
+    //                   renderItem={({ item, index }) => (
+    //                     <EnrolledCourse
+    //                       key={index}
+    //                       courseManagementId={item.id}
+    //                       imagePath={item.imagePath}
+    //                       name={item.name}
+    //                       detail={item.detail}
+    //                       navigation={navigation}
+    //                       isFree={item.price == 0 && true}
+    //                       isBuy={item.price == 0 ? true : item.isBuy}
+    //                       price={item.price}
+    //                       creationTime={item.creationTime}
+    //                     />
+    //                   )}
+    //                 />
+    //               </View>
+    //             ) : (
+    //               <View style={styles.noAvailableStyle}>
+    //                 <Text style={styles.noAvailableTextStyle}>
+    //                   No Course has been purchased
+    //                 </Text>
+    //               </View>
+    //             )}
+    //           </View>
 
-              <Text
-                allowFontScaling={false}
-                style={[styles.textStyle, { marginTop: high / 85.4 }]}
-              >
-                Free Videos
-              </Text>
+    //           <Text
+    //             allowFontScaling={false}
+    //             style={[styles.textStyle, { marginTop: high / 85.4 }]}
+    //           >
+    //             Free Videos
+    //           </Text>
 
-              {/* {feedFullData ? (
-                <Fragment>
-                  {feedFullData.map((data1: any, idx: number) => {
-                    if (data1.type == "Video") {
-                      return <Video item={data1} key={idx} />;
-                    }
-                  })}
-                </Fragment>
-              ) : (
-                // <View style={styles.freeVideoScroll}>
-                //   <FlatList
-                //     showsHorizontalScrollIndicator={false}
-                //     horizontal
-                //     data={feedVidForHome}
-                //     renderItem={({ item, index }) => (
-                //       <Video item={item} key={index} />
-                //     )}
-                //   />
-                // </View>
-                <View style={styles.noAvailableStyle}>
-                  <Text style={styles.noAvailableTextStyle}>
-                    No Course has been purchased
-                  </Text>
-                </View>
-              )} */}
-
-              {feedFullData ? (
-                <View
-                  style={{
-                    left: wid / 12.8,
-                    flexDirection: "row",
-                    marginRight: wid / 45,
-                  }}
-                >
-                  <FlatList
-                    data={feedFullData.filter((item) => item.type == "Video")}
-                    horizontal={true}
-                    showsHorizontalScrollIndicator={false}
-                    renderItem={({ item, index }) => (
-                      <VideoHome item={item} key={index} />
-                    )}
-                  />
-                </View>
-              ) : (
-                <View style={styles.noAvailableStyle}>
-                  <Text style={styles.noAvailableTextStyle}>
-                    No Course has been purchased
-                  </Text>
-                </View>
-              )}
-            </ScrollView>
-          </>
-        )}
-      </>
+    //           {feedFullData ? (
+    //             <View
+    //               style={{
+    //                 left: wid / 12.8,
+    //                 flexDirection: "row",
+    //                 marginRight: wid / 45,
+    //               }}
+    //             >
+    //               <FlatList
+    //                 data={feedFullData.filter((item) => item.type == "Video")}
+    //                 horizontal={true}
+    //                 showsHorizontalScrollIndicator={false}
+    //                 renderItem={({ item, index }) => (
+    //                   <VideoHome item={item} key={index} />
+    //                 )}
+    //               />
+    //             </View>
+    //           ) : (
+    //             <View style={styles.noAvailableStyle}>
+    //               <Text style={styles.noAvailableTextStyle}>
+    //                 No Course has been purchased
+    //               </Text>
+    //             </View>
+    //           )}
+    //         </ScrollView>
+    //       </>
+    //     )}
+    //   </>
+    // </View>
+    <View>
+      <MyWebComponent />
     </View>
   );
 }
