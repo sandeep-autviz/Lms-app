@@ -8,7 +8,7 @@ export const MyWebComponentFeed = ({ youtube }) => {
       <WebView
         androidHardwareAccelerationDisabled
         useOnRenderProcessGone="true"
-        androidLayerType="software"
+        // androidLayerType="software"
         originWhitelist={["*"]}
         javaScriptEnabled={true}
         mediaPlaybackRequiresUserAction={false} // Allows autoplay
@@ -26,5 +26,5 @@ http://app.teachersvision.co.in/#/account/watch?url=${youtube}
 };
 
 const style = StyleSheet.create({
-  webview: { width: 330, height: 200, opacity: 0.99 },
+  webview: { width: 295, height: 200, opacity: 0.99 },
 });

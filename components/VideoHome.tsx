@@ -48,7 +48,7 @@ export default function VideoHome(props: any) {
         paddingHorizontal: 15,
         flexDirection: "column",
         marginBottom: 30,
-        height: heightPercentageToDP(30.8),
+        height: heightPercentageToDP(33.8),
         width: wid / 1,
         ...shadow,
         marginRight: wid / 12,

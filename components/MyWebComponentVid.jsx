@@ -8,7 +8,7 @@ export const MyWebComponentVid = ({ youtube }) => {
       <WebView
         androidHardwareAccelerationDisabled
         useOnRenderProcessGone="true"
-        androidLayerType="software"
+        // androidLayerType="software"
         originWhitelist={["*"]}
         javaScriptEnabled={true}
         mediaPlaybackRequiresUserAction={false} // Allows autoplay
