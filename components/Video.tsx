@@ -32,6 +32,7 @@ export default function VideoComponent(props: any) {
 
   const [readMore, setReadMore] = useState(detail.length > 50 ? true : false);
   const source = {
+
     html:
       description && readMore === true
         ? `${detail.trim().slice(0, 174)}`
@@ -43,8 +44,6 @@ export default function VideoComponent(props: any) {
     console.log(" full screen");
     setFullScreen((s) => !s);
   }
-
-  console.log(fullScreen, "fullscreen");
 
   return (
     <View>
@@ -109,7 +108,6 @@ export default function VideoComponent(props: any) {
             // height must be adjusted to
             // just cover the top 3 dots
             style={{
-              backgroundColor: "red",
               borderColor: "red",
               top: 0,
               height: 90,

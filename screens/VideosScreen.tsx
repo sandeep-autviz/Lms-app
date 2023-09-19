@@ -110,12 +110,12 @@ export default function VideosScreen(props: any) {
       }}
     >
       <HeaderNav name="Videos List" navigation={props.navigation} />
-      <YoutubeIframe
+      {/* <YoutubeIframe
         height={high / 3.5}
         play={playing}
         videoId={getVideoId(videoUrl)}
         onChangeState={onStateChange}
-      />
+      /> */}
       <View
         style={{
           justifyContent: "center",

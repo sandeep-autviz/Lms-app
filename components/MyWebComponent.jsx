@@ -1,25 +1,30 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { WebView } from "react-native-webview";
-import Webview from "../screens/Webview";
 
-// ...
-export const MyWebComponent = () => {
+export const MyWebComponent = ({ youtube }) => {
   return (
-    <View style={style.webview}>
+    <View androidHardwareAccelerationDisabled style={style.webview}>
       <WebView
-        allowsFullscreenVideo
-        basicAuthCredential={false}
 
+        androidHardwareAccelerationDisabled
+        androidLayerType="software"
+        originWhitelist={["*"]}
+        javaScriptEnabled={true}
+        mediaPlaybackRequiresUserAction={false} // Allows autoplay
+        allowsInlineMediaPlayback={true} // Allows video to play inline
+        useWebKit={true}
+        allowsFullscreenVideo
         source={{
-          uri: "http://app.teachersvision.co.in/#app/student/daily-feed/video",
+          uri: `
+http://app.teachersvision.co.in/#/account/watch?url=${youtube}
+`,
         }}
-        style={{ flex: 1 }}
       />
     </View>
   );
 };
 
 const style = StyleSheet.create({
-  webview: { width: 350, height: 600 },
+  webview: { width: 330, height: 200, opacity: 0.99 },
 });

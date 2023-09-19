@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import YoutubeIframe from "react-native-youtube-iframe";
 
 import { Alert } from "react-native";
 import { trimDate, getVideoId } from "../utils/Logics";
@@ -17,6 +16,7 @@ const shadow = generateBoxShadowStyle(-2, 4, "#171717", 0.2, 3, 4, "#171717");
 import RenderHtml from "react-native-render-html";
 import { heightPercentageToDP } from "../lib/ResonsiveDimesions";
 import { generateBoxShadowStyle } from "../lib/generateBoxShadow";
+import { MyWebComponent } from "./MyWebComponent";
 
 export default function VideoHome(props: any) {
   const [isVideoResume, setisVideoResume] = useState<boolean>(false);
@@ -30,10 +30,9 @@ export default function VideoHome(props: any) {
       Alert.alert("video has finished playing!");
     }
   }, []);
-  const togglePlaying = useCallback(() => {
-    setPlaying((prev) => !prev);
-  }, []);
-
+  // const togglePlaying = useCallback(() => {
+  //   setPlaying((prev) => !prev);
+  // }, []);
   const [readMore, setReadMore] = useState(detail.length > 50 ? true : false);
   const source = {
     html:
@@ -42,21 +41,15 @@ export default function VideoHome(props: any) {
         : `${detail.trim()}`,
   };
 
-  function onFullScreen() {
-    console.log(" full screen");
-    setFullScreen((s) => !s);
-  }
-  console.log(fullScreen, "iam");
   return (
-    <TouchableOpacity
-      onPress={() => togglePlaying}
+    <View
       style={{
         paddingVertical: 13,
         paddingHorizontal: 15,
         flexDirection: "column",
         marginBottom: 30,
         height: heightPercentageToDP(30.8),
-        width: wid / 1.2,
+        width: wid / 1,
         ...shadow,
         marginRight: wid / 12,
         borderColor: "#F1F1F1",
@@ -82,15 +75,12 @@ export default function VideoHome(props: any) {
         <Text allowFontScaling={false} style={styles.cardText}>
           {title}
         </Text>
-        {/* <Image
-          source={require("../assets/images/dots.png")}
-          style={{ alignSelf: "center" }}
-        /> */}
       </View>
       <Text
         allowFontScaling={false}
         style={{
           fontFamily: "Poppins-Bold",
+
           fontSize: 10,
           color: "#92A1B8",
           paddingHorizontal: 4,
@@ -98,41 +88,21 @@ export default function VideoHome(props: any) {
       >
         {trimDate(creationTime)}
       </Text>
-
       <View>
-        <YoutubeIframe
+        {/* <YoutubeIframe
           onFullScreenChange={onFullScreen}
           height={high / 4}
           webViewStyle={{ opacity: 0.99 }}
           play={playing}
-          videoId={getVideoId(fileName)}
+          // videoId={getVideoId(fileName)}
+          videoId={"yQTtvK4X9qw"}
           onChangeState={onStateChange}
-          // initialPlayerParams={{ controls: false }}
-        />
-        <TouchableOpacity
-          // TouchableOpacity to "steal" taps
-          // absolutely positioned to the top
-          // height must be adjusted to
-          // just cover the top 3 dots
-          style={{
-            top: 0,
-            height: 50,
-            width: "100%",
-            position: "absolute",
-          }}
-        />
-        {fullScreen && (
-          <View style={styles.overlay}>
-            <Text>hello</Text>
-          </View>
-        )}
+    /<> */}
+        <MyWebComponent youtube={getVideoId(fileName)} />
       </View>
 
-      <View style={{ padding: 0, margin: 0, backgroundColor: "#FAFAFB" }}>
+      <View style={{ padding: 0, margin: 2, backgroundColor: "#FAFAFB" }}>
         {description != null && (
-          // <Text allowFontScaling={false} style={styles.cardDesc}>
-          //   {description && readMore === true ? detail.slice(0, 180) : detail}
-          // </Text>
           <RenderHtml contentWidth={wid} source={source} />
         )}
         {description != null && (
@@ -153,7 +123,7 @@ export default function VideoHome(props: any) {
           </TouchableOpacity>
         )}
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
 
@@ -163,12 +133,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
+
   image: {
     width: wid / 1.2,
     height: wid / 2.4,
