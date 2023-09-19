@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import { WebView } from "react-native-webview";
 
-export const MyWebComponent = ({ youtube }) => {
+export const MyWebComponentVid = ({ youtube }) => {
   return (
     <View androidHardwareAccelerationDisabled style={style.webview}>
       <WebView
         androidHardwareAccelerationDisabled
-        // useOnRenderProcessGone="true"
+        useOnRenderProcessGone="true"
         androidLayerType="software"
         originWhitelist={["*"]}
         javaScriptEnabled={true}

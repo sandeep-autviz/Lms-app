@@ -428,7 +428,7 @@ function HomeScreen({ route, navigation }: any) {
                 Free Videos
               </Text>
 
-              {feedFullData ? (
+              {/* {feedFullData ? (
                 <View
                   style={{
                     left: wid / 12.8,
@@ -452,7 +452,7 @@ function HomeScreen({ route, navigation }: any) {
                   </Text>
                 </View>
               )}
-              <View style={{ height: 50 }}></View>
+              <View style={{ height: 50 }}></View> */}
             </ScrollView>
           </>
         )}

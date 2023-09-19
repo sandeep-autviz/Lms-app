@@ -14,6 +14,7 @@ import { trimDate, getVideoId } from "../utils/Logics";
 const wid = Dimensions.get("window").width;
 const high = Dimensions.get("window").height;
 import RenderHtml from "react-native-render-html";
+import { MyWebComponentFeed } from "./MyWebComponentFeed";
 export default function VideoComponent(props: any) {
   const [isVideoResume, setisVideoResume] = useState<boolean>(false);
   const { description, image, title, fileName, creationTime } = props.item;
@@ -32,7 +33,6 @@ export default function VideoComponent(props: any) {
 
   const [readMore, setReadMore] = useState(detail.length > 50 ? true : false);
   const source = {
-
     html:
       description && readMore === true
         ? `${detail.trim().slice(0, 174)}`
@@ -94,14 +94,15 @@ export default function VideoComponent(props: any) {
         </Text>
 
         <View>
-          <YoutubeIframe
+          {/* <YoutubeIframe
             onFullScreenChange={onFullScreen}
             height={high / 4}
             webViewStyle={{ opacity: 0.99 }}
             play={playing}
             videoId={getVideoId(fileName)}
             onChangeState={onStateChange}
-          />
+          /> */}
+          <MyWebComponentFeed youtube={getVideoId(fileName)} />
           <View
             // TouchableOpacity to "steal" taps
             // absolutely positioned to the top

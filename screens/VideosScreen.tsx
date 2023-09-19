@@ -27,6 +27,8 @@ import { baseUrl } from "../utils";
 import YoutubeIframe from "react-native-youtube-iframe";
 import { getVideoId } from "../utils/Logics";
 import { horizontalScale } from "../utils/metrics";
+import { MyWebComponent } from "../components/MyWebComponent";
+import { MyWebComponentVid } from "../components/MyWebComponentVid";
 const wid = Dimensions.get("window").width;
 const high = Dimensions.get("window").height;
 export default function VideosScreen(props: any) {
@@ -116,6 +118,7 @@ export default function VideosScreen(props: any) {
         videoId={getVideoId(videoUrl)}
         onChangeState={onStateChange}
       /> */}
+      <MyWebComponentVid youtube={getVideoId(videoUrl)} />
       <View
         style={{
           justifyContent: "center",
