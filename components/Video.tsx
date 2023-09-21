@@ -7,15 +7,14 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import YoutubeIframe from "react-native-youtube-iframe";
 
 import { Alert } from "react-native";
 import { trimDate, getVideoId } from "../utils/Logics";
 const wid = Dimensions.get("window").width;
 const high = Dimensions.get("window").height;
 import RenderHtml from "react-native-render-html";
+import { MyWebComponentFeed } from "./MyWebComponentFeed";
 export default function VideoComponent(props: any) {
-  const [isVideoResume, setisVideoResume] = useState<boolean>(false);
   const { description, image, title, fileName, creationTime } = props.item;
   let detail = description + "";
   const [playing, setPlaying] = useState(false);
@@ -26,10 +25,6 @@ export default function VideoComponent(props: any) {
       Alert.alert("video has finished playing!");
     }
   }, []);
-  const togglePlaying = useCallback(() => {
-    setPlaying((prev) => !prev);
-  }, []);
-
   const [readMore, setReadMore] = useState(detail.length > 50 ? true : false);
   const source = {
     html:
@@ -37,18 +32,12 @@ export default function VideoComponent(props: any) {
         ? `${detail.trim().slice(0, 174)}`
         : `${detail.trim()}`,
   };
-  console.log(getVideoId(fileName), "filename");
 
-  function onFullScreen() {
-    console.log(" full screen");
-    setFullScreen((s) => !s);
-  }
   return (
     <View>
-      <TouchableOpacity
-        onPress={() => togglePlaying}
+      <View
         style={{
-          width: "70%",
+          width: "90%",
           padding: 16,
           marginTop: 8,
           marginBottom: high / 42.7,
@@ -92,43 +81,15 @@ export default function VideoComponent(props: any) {
         </Text>
 
         <View>
-          <YoutubeIframe
+          {/* <YoutubeIframe
             onFullScreenChange={onFullScreen}
             height={high / 4}
             webViewStyle={{ opacity: 0.99 }}
             play={playing}
             videoId={getVideoId(fileName)}
             onChangeState={onStateChange}
-          />
-          {fullScreen ? (
-            <View
-              // TouchableOpacity to "steal" taps
-              // absolutely positioned to the top
-              // height must be adjusted to
-              // just cover the top 3 dots
-              style={{
-                backgroundColor: "red",
-                borderColor: "red",
-                top: 0,
-                height: 90,
-                width: "100%",
-                position: "absolute",
-              }}
-            />
-          ) : (
-            <TouchableOpacity
-              // TouchableOpacity to "steal" taps
-              // absolutely positioned to the top
-              // height must be adjusted to
-              // just cover the top 3 dots
-              style={{
-                top: 0,
-                height: 50,
-                width: "100%",
-                position: "absolute",
-              }}
-            />
-          )}
+          /> */}
+          <MyWebComponentFeed youtube={getVideoId(fileName)} />
         </View>
 
         <View style={{ padding: 0, margin: 0, backgroundColor: "#FAFAFB" }}>
@@ -156,7 +117,7 @@ export default function VideoComponent(props: any) {
             </TouchableOpacity>
           )}
         </View>
-      </TouchableOpacity>
+      </View>
     </View>
   );
 }

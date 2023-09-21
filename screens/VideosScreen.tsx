@@ -14,7 +14,6 @@ import {
 } from "react-native";
 import { Dimensions } from "react-native";
 import { useEffect, useState } from "react";
-import YoutubePlayer from "react-native-youtube-iframe";
 import * as React from "react";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { apps } from "../data/AppData";
@@ -27,6 +26,8 @@ import { baseUrl } from "../utils";
 import YoutubeIframe from "react-native-youtube-iframe";
 import { getVideoId } from "../utils/Logics";
 import { horizontalScale } from "../utils/metrics";
+import { MyWebComponent } from "../components/MyWebComponent";
+import { MyWebComponentVid } from "../components/MyWebComponentVid";
 const wid = Dimensions.get("window").width;
 const high = Dimensions.get("window").height;
 export default function VideosScreen(props: any) {
@@ -110,12 +111,13 @@ export default function VideosScreen(props: any) {
       }}
     >
       <HeaderNav name="Videos List" navigation={props.navigation} />
-      <YoutubeIframe
+      {/* <YoutubeIframe
         height={high / 3.5}
         play={playing}
         videoId={getVideoId(videoUrl)}
         onChangeState={onStateChange}
-      />
+      /> */}
+      <MyWebComponentVid youtube={getVideoId(videoUrl)} />
       <View
         style={{
           justifyContent: "center",

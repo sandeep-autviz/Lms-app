@@ -10,12 +10,9 @@ import {
 import { ActivityIndicator } from "react-native-paper";
 import * as SecureStore from "expo-secure-store";
 import HeaderNav from "../components/HeaderNav";
-import Video from "../components/Video";
 import EnrolledCourse from "../components/EnrolledCourse";
 import axios from "axios";
-import VideoCard from "../components/VideoCard";
 import { useStateContext } from "./Context/ContextProvider";
-import { getVideoId } from "../utils/Logics";
 import { baseUrl, KEYS } from "../utils";
 import { StackActions } from "@react-navigation/native";
 import Banner from "../components/Banner";
@@ -25,12 +22,13 @@ import { Storage } from "../utils/LocalStorage";
 import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { Platform } from "react-native";
+import VideoHome from "../components/VideoHome";
 SplashScreen.preventAutoHideAsync().then((result) =>
   console.log(`SplashScreen.preventAutoHideAsync() ${result}`)
 );
 const wid = Dimensions.get("window").width;
 const high = Dimensions.get("window").height;
-function HomeScreen({ route, navigation }: any) {
+function HomeScreen({ navigation }: any) {
   const { setUserDetail, setuserImage, setAccess_token, refresh } =
     useStateContext();
   const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +50,9 @@ function HomeScreen({ route, navigation }: any) {
         FeedData(value);
       }
     });
+
   }, []);
+
   const getUserImage = (access_token: string, userId: string) => {
     const config = {
       headers: {
@@ -274,7 +274,10 @@ function HomeScreen({ route, navigation }: any) {
         ) : (
           <>
             <HeaderNav setIsLoading={setIsLoading} name={"DashBoard"} />
-            <ScrollView style={styles.onGoingVideoScroll}>
+            <ScrollView
+              overScrollMode="never"
+              style={styles.onGoingVideoScroll}
+            >
               <View style={styles.FAFAFBbackgoundcolor}>
                 <FlatList
                   style={{ left: wid / 12.8 }}
@@ -425,32 +428,6 @@ function HomeScreen({ route, navigation }: any) {
                 Free Videos
               </Text>
 
-              {/* {feedFullData ? (
-                <Fragment>
-                  {feedFullData.map((data1: any, idx: number) => {
-                    if (data1.type == "Video") {
-                      return <Video item={data1} key={idx} />;
-                    }
-                  })}
-                </Fragment>
-              ) : (
-                // <View style={styles.freeVideoScroll}>
-                //   <FlatList
-                //     showsHorizontalScrollIndicator={false}
-                //     horizontal
-                //     data={feedVidForHome}
-                //     renderItem={({ item, index }) => (
-                //       <Video item={item} key={index} />
-                //     )}
-                //   />
-                // </View>
-                <View style={styles.noAvailableStyle}>
-                  <Text style={styles.noAvailableTextStyle}>
-                    No Course has been purchased
-                  </Text>
-                </View>
-              )} */}
-
               {feedFullData ? (
                 <View
                   style={{
@@ -464,37 +441,18 @@ function HomeScreen({ route, navigation }: any) {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                     renderItem={({ item, index }) => (
-                      // <View
-                      //   style={{
-                      //     marginRight: 10,
-                      //     width: 200,
-                      //     height: 150,
-                      //     backgroundColor: "red",
-                      //   }}
-                      // >
-                      //   <Text>hii</Text>
-                      // </View>
-                      <Video item={item} key={index} />
+                      <VideoHome item={item} key={index} />
                     )}
                   />
                 </View>
               ) : (
-                // <View style={styles.freeVideoScroll}>
-                //   <FlatList
-                //     showsHorizontalScrollIndicator={false}
-                //     horizontal
-                //     data={feedVidForHome}
-                //     renderItem={({ item, index }) => (
-                //       <Video item={item} key={index} />
-                //     )}
-                //   />
-                // </View>
                 <View style={styles.noAvailableStyle}>
                   <Text style={styles.noAvailableTextStyle}>
                     No Course has been purchased
                   </Text>
                 </View>
               )}
+              <View style={{ height: 50 }}></View>
             </ScrollView>
           </>
         )}
