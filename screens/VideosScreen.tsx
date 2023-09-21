@@ -14,7 +14,6 @@ import {
 } from "react-native";
 import { Dimensions } from "react-native";
 import { useEffect, useState } from "react";
-import YoutubePlayer from "react-native-youtube-iframe";
 import * as React from "react";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { apps } from "../data/AppData";

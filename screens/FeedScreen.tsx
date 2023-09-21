@@ -189,12 +189,13 @@ export default function FeedScreen(props: any) {
       </View>
 
       <ScrollView
+        overScrollMode="never"
         style={{
           backgroundColor: "#FAFAFB",
         }}
       >
         {currentState == "Current Affairs" ? (
-          <ScrollView>
+          <ScrollView overScrollMode="never">
             {data.map((data1: any) => {
               if (data1.type == "Current Affairs") {
                 return (
