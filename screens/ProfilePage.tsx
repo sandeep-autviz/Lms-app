@@ -1,12 +1,11 @@
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
-import * as SecureStore from "expo-secure-store";
 import { StackActions, useNavigation } from "@react-navigation/native";
 import {
   TouchableOpacity,
   ImageBackground,
   Image,
-  ScrollView,
+
   Dimensions,
   StyleSheet,
   BackHandler,
@@ -275,24 +274,6 @@ export default function ProfilePage(props: any) {
             source={require("../assets/images/arow.png")}
           />
         </TouchableOpacity>
-        {/* <TouchableOpacity
-          style={styles.cardCntnr}
-          onPress={() => props.navigation.navigate("WebViewInMobile")}
-        >
-          <Image
-            source={require("../assets/images/key.png")}
-            style={{ backgroundColor: "pink", alignSelf: "center", left: 10 }}
-          />
-
-          <Text allowFontScaling={false} style={styles.cardtext}>
-            Open Web View
-          </Text>
-          <Image
-            style={styles.cardImage}
-            source={require("../assets/images/arow.png")}
-          />
-        </TouchableOpacity> */}
-
         <TouchableOpacity
           onPress={() => logoutButtonHandler()}
           style={{
@@ -318,7 +299,6 @@ export default function ProfilePage(props: any) {
           </Text>
         </TouchableOpacity>
       </View>
-      {/* </ScrollView> */}
     </View>
   );
 }
@@ -342,7 +322,6 @@ const styles = StyleSheet.create({
     left: wid / 15.36,
   },
   cardCntnr: {
-    //  justifyContent:"center",
     marginBottom: high / 85.4,
     flexDirection: "row",
     width: "85%",

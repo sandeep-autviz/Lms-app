@@ -16,7 +16,6 @@ import { baseUrl } from "../utils";
 import { generateBoxShadowStyle } from "../lib/generateBoxShadow";
 import { Status } from "../types";
 import moment from "moment";
-import { putData } from "../api/SubjectService/sever";
 const high = Dimensions.get("window").height;
 const wid = Dimensions.get("window").width;
 const shadow = generateBoxShadowStyle(-2, 4, "#171717", 0.2, 3, 4, "#171717");

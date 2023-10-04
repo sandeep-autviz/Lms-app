@@ -44,16 +44,6 @@ export default function Password() {
     }
   };
 
-  // const checkPasswordValidation = async(password: any, newPassword: any) => {
-  //   if (password == "" || password.trim() == "") {
-  //     alert("Enter Old Password");
-  //   } else if (newPassword.trim() == "" || newPassword.trim().length < 7) {
-  //     if (newPassword.trim() == "") alert("Enter New Password");
-  //     else alert("Weak Password");
-  //   } else {
-  //     changePassword(password, newPassword);
-  //   }
-  // };
   const SignUpAgainUpdatePassWord = async () => {
     var data = JSON.stringify({
       userNameOrEmailAddress: userDetail.emailAddress,
@@ -137,8 +127,6 @@ export default function Password() {
           borderRadius: 5,
           alignSelf: "center",
           justifyContent: "center",
-          // left: wid/12.8,
-          // backgroundColor: "pink",
           flexDirection: "column",
           height: high / 16.35,
         }}
@@ -166,8 +154,6 @@ export default function Password() {
           borderRadius: 5,
           alignSelf: "center",
           justifyContent: "center",
-          // left: wid/12.8,
-          // backgroundColor: "pink",
           flexDirection: "column",
           height: high / 16.35,
         }}
@@ -176,8 +162,6 @@ export default function Password() {
           style={{
             fontFamily: "Poppins-Regular",
             fontSize: 18,
-            // top: high / 4,
-            // height: 40,
             left: wid / 76.8,
             textAlignVertical: "center",
           }}

@@ -54,7 +54,6 @@ export default function FullScreen({ route, navigation }: any) {
           alignSelf: "center",
           left: high / 40,
           right: wid / 2,
-          // backgroundColor:"pink"
         }}
       >
         <WebView
@@ -70,51 +69,6 @@ export default function FullScreen({ route, navigation }: any) {
           }}
         />
 
-        {/* <TouchableOpacity style={{ top: wid / 1.3, right: high / 21, backgroundColor: "pink" }} onPress={() => togglePlaying()}> 
-        {shouldShow ? (
-         <><FontAwesome name="play-circle-o" size={40} color="black" />
-          </> ) : null} */}
-        {/* </TouchableOpacity> */}
-        {/* <TouchableOpacity
-              style={{
-                height: wid / 6.4,
-                top: 1,
-                width: '100%',
-                // backgroundColor:"red",
-                position: 'absolute',
-              }} />
-            <TouchableOpacity
-              style={{
-                height: wid / 4.26,
-                top: wid / 2.648,
-                width: '50%',
-                // backgroundColor:"pink",
-                position: 'absolute',
-              }} />
-            <TouchableOpacity
-              style={{
-                height: wid / 2.16,
-                top: wid / 2.394,
-                width: '50%',
-                // backgroundColor:"pink",
-                position: 'absolute',
-              }} />
-               <TouchableOpacity
-              style={{
-                height: wid / 20.16,
-                top: wid / 1.05,
-                width: '100%',
-                // backgroundColor:"pink",
-                position: 'absolute',
-              }} />
-              <TouchableOpacity
-              style={{
-                height: wid / 10.16,
-                top: wid / 1.15,
-                width: '5%',
-                // backgroundColor:"pink",
-                position: 'absolute',
-              }} /> */}
         <TouchableOpacity
           // onPress={()=> navigation.goBack()}
           style={{
@@ -136,40 +90,6 @@ export default function FullScreen({ route, navigation }: any) {
             ></FontAwesome>
           ) : null}
         </TouchableOpacity>
-        {/* <TouchableOpacity
-              style={{
-                height: wid / 10.16,
-                top: wid / 1.15,
-                left : high/1.18,
-                width: '10%',
-                alignSelf:"center",
-                backgroundColor:"red",
-                position: 'absolute',
-              }} /> */}
-        {/* <TouchableOpacity
-              onPress={()=> togglePlaying()}
-              style={{
-                height: wid / 6.4,
-                top: wid / 2.194,
-                width: '10%',
-                left : high/2.5,
-                justifyContent:"center",
-                // backgroundColor:"red",
-                alignItems:"center",
-                position: 'absolute',
-              }}>
-                {!shouldShow ? (
-              <FontAwesome name='youtube-play' style={{color  : "red"}} allowFontScaling={false} size={50}></FontAwesome> 
-                ):null}
-              </TouchableOpacity> */}
-        {/* <TouchableOpacity
-              style={{
-                height: wid / 4.26,
-                top: wid / 5.907,
-                width: '100%',
-                backgroundColor:"red",
-                position: 'absolute',
-              }} /> */}
       </View>
       <View
         style={{

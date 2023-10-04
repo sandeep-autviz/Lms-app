@@ -29,8 +29,6 @@ const TestCard = (props: any) => {
   const config = {
     headers: {
       Authorization: `Bearer ${access_token}`,
-      // "Abp-TenantId": "1",
-      // "Access-Control-Allow-Origin": `http://192.168.18.95:19000`,
     },
   };
 
@@ -45,7 +43,6 @@ const TestCard = (props: any) => {
           {
             text: "Resume",
             onPress: () => {
-              // (currrentCourseData.isDeleted = "changedTheValue"),
               navigation.navigate("Test", {
                 data: currrentCourseData,
               } as never);
@@ -65,8 +62,6 @@ const TestCard = (props: any) => {
   };
   const reattempt = (data: any) => {
     const { id, isSubmitted } = data;
-    // const uniqueKeySection = new Map();
-    // currrentCourseData.isReattempt = "changedTheValue";
     if (isSubmitted == true) {
       MarkIsSubmitted(id);
     }
@@ -137,7 +132,6 @@ const TestCard = (props: any) => {
           Authorization: `Bearer ${access_token}`,
           "Content-Type": " application/json",
           "Abp-TenantId": "1",
-          // "Access-Control-Allow-Origin": `http://192.168.18.95:19000`,
         },
       };
 
@@ -182,7 +176,6 @@ const TestCard = (props: any) => {
         Authorization: `Bearer ${access_token}`,
         "Content-Type": " application/json",
         "Abp-TenantId": "1",
-        // "Access-Control-Allow-Origin": `http://192.168.18.95:19000`,
       },
     };
     const data = JSON.stringify(element);
@@ -329,7 +322,6 @@ const TestCard = (props: any) => {
                   }}
                   onPress={() => {
                     start(currrentCourseData);
-                    // reattempt(currrentCourseData);
                   }}
                 >
                   <Text

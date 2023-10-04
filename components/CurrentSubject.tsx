@@ -13,25 +13,13 @@ import moment from "moment";
 import { Storage } from "../utils/LocalStorage";
 import HtmlRenderWithMathTag from "./HtmlRenderWithMathTag";
 import { putData } from "../api/SubjectService/sever";
-import { MathJaxSvg } from "react-native-mathjax-html-to-svg";
 import RenderHTML from "react-native-render-html";
 import {
-  heightPercentageToDP,
   widthPercentageToDP,
 } from "../lib/ResonsiveDimesions";
 
 const high = Dimensions.get("window").height;
 const wid = Dimensions.get("window").width;
-interface Props {
-  currentSectionTypeQuestoion: any[];
-  sectionLength: number;
-  sectionIdx: number;
-  SumbitTest: (title?: any) => Promise<void>;
-  nextSection: (index: number) => void;
-  studentId: number | undefined;
-  index: number;
-  setIndex: React.Dispatch<React.SetStateAction<number>>;
-}
 const CurrentSectionQuestion: FC<any> = ({
   currentSectionTypeQuestoion,
   sectionLength,

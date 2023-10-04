@@ -17,20 +17,6 @@ const PopularCourse = ({ navigation, item }: any) => {
       Courseid: item.id,
     });
   };
-  console.log(item);
-  // {  {
-  //   !isFree && (
-  //     <Fragment>
-  //       <FontAwesome
-  //         style={{ marginRight: 5, marginLeft: 5 }}
-  //         name="rupee"
-  //         size={13}
-  //         color="black"
-  //       />
-  //       <Text style={{ fontFamily: "Poppins-Bold" }}>{price}</Text>
-  //     </Fragment>
-  //   );
-  // }}
   return (
     <TouchableOpacity onPress={() => handleNavigate()} style={styles.topicCntr}>
       <View style={{}}>

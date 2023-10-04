@@ -94,13 +94,6 @@ export default function NotificationBox({ data }) {
           </TouchableOpacity>
         </View>
 
-        {/* <Text
-          onPress={() => setIsCollapsed((s) => !s)}
-          style={{ color: "black" }}
-        >
-          Read more
-        </Text> */}
-        {/* </TouchableOpacity> */}
         <View
           style={{
             flexDirection: "row",
@@ -133,7 +126,6 @@ export default function NotificationBox({ data }) {
           </Text>
         </View>
       </View>
-      {/* <AntDesign name="right" size={24} color="black" /> */}
     </TouchableOpacity>
   );
 }

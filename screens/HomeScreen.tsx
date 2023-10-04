@@ -63,7 +63,7 @@ function HomeScreen({ navigation }: any) {
       config
     );
   };
-  console.log("navigation1", navigation);
+
 
   function extractNumberFromURL(url: string) {
     var regex = /\/(\d+)\//;

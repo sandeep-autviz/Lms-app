@@ -50,7 +50,6 @@ export default function CurrentAffairs(props: any) {
           <View
             style={{
               paddingVertical: high / 180,
-              // alignSelf: "flex-start",
               width: wid / 2,
               flexDirection: "column",
               backgroundColor: "transparent",
@@ -67,42 +66,6 @@ export default function CurrentAffairs(props: any) {
             >
               {title}
             </Text>
-            {/* {description && trimTextName(description).charAt(0) != "<" ? (
-              <Text
-                style={{
-                  backgroundColor: "transparent",
-                  marginVertical: 2,
-                  fontFamily: "Poppins-Regular",
-                  fontSize: 12,
-                }}
-              >
-                {trimTextName(description)}
-              </Text>
-            ) : (
-              <View>
-                {description && (
-                  // <RenderHtml
-                  //   contentWidth={wid}
-                  //   ignoredDomTags={ingnored}
-                  //   source={source}
-                  // />
-                  <WebView
-                    style={{
-                      backgroundColor: "transparent",
-                      marginTop: -10,
-                      width: wid / 1.9,
-                      height: high / 15.5,
-                    }}
-                    originWhitelist={["*"]}
-                    source={{
-                      html: `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"></head><style>
-                      body { font-size: 12px; word-wrap: break-word; overflow-wrap: }
-                  </style><body>${description}</body></html>`,
-                    }}
-                  />
-                )}
-              </View>
-            )} */}
           </View>
           <AntDesign name="right" size={28} color="black" />
         </TouchableOpacity>
@@ -110,58 +73,6 @@ export default function CurrentAffairs(props: any) {
     </ScrollView>
   );
 }
-//   <Text
-//     allowFontScaling={false}
-//     style={{
-//       fontFamily: "Poppins-Regular",
-//       fontSize: 15,
-//       // marginBottom: 5,
-
-//       // right: wid / 5.1,
-//       // alignSelf: "flex-start",
-//       // right: wid / .2,
-//       fontWeight: "700",
-//     }}
-//   >
-//     {props.item.subjectName}
-//   </Text>
-//   <Text
-//     allowFontScaling={false}
-//     style={{
-//       fontFamily: "Poppins-Regular",
-//       fontSize: 9,
-//       top: 10,
-//       // right: wid / 5.1,
-//       // alignSelf: "flex-start",
-//       // right: wid / .2,
-//       fontWeight: "700",
-//     }}
-//   >
-//     {props.item.description}
-//   </Text>
-//   {/* <View
-//       style={{
-//         flexDirection: "row",
-//         alignContent: "flex-end",
-//         alignItems: "flex-start",
-//         backgroundColor: "#FAFAFB",
-//         right: wid / 20,
-//       }}
-//     >
-//       <FontAwesome
-//         name="eye"
-//         size={10}
-//         style={{ top: high / 186.75, color: "#8A8A8A" }}
-//       />
-//       <Text allowFontScaling={false} style={styles.number}>
-//         {props.numTopics} Topic
-//       </Text>
-//     </View> */}
-// </View>
-// <Image
-//   source={require("../assets/images/arow.png")}
-//   style={{ left: 30 }}
-// />
 
 const styles = StyleSheet.create({
   container: {

@@ -7,7 +7,6 @@ import {
   View,
   Text,
 } from "react-native";
-import moment from "moment";
 import { ActivityIndicator } from "react-native-paper";
 import HeaderNav from "../components/HeaderNav";
 

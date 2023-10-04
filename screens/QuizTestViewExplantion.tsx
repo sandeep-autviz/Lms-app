@@ -126,7 +126,7 @@ export default function QuizTestViewExplantion(props: any) {
             },
           },
         ]);
-        
+
         Toast.show({
           type: "success",
           text1: "Saved",
@@ -411,7 +411,6 @@ export default function QuizTestViewExplantion(props: any) {
                       { fontSize: 20, textAlign: "center" },
                     ]}
                   >
-                    {/* General Instructions */}
                     Explanation
                   </Text>
 

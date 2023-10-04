@@ -116,19 +116,10 @@ const OtpScreen = (props: any) => {
       })
       .catch((error: any) => {
         console.log(error);
-        // navigation.navigate();
         Alert.alert("Login Failed", error.response.data.error.details, [
           { text: "Okay" },
         ]);
-        // if(error.response.data.)
-        // setUserMailId("");
-        // setUserPassword("");
       });
-    // Toast.show({
-    //   type: "info",
-    //   text1: "Please Enter Correct PhoneNo",
-    //   position: "bottom",
-    // });
   };
   return (
     <KeyboardAvoidingView

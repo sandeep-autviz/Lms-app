@@ -267,7 +267,6 @@ export default function MockTestSubjectTest(props: any) {
           uniqueTestSection.push(element);
         }
       });
-      // console.log("uniquesTestSECTION", uniqueTestSection);
       await new Promise((resolve) => {
         setTestSections(uniqueTestSection);
         resolve("setting state Async");

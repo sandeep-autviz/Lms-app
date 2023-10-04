@@ -222,7 +222,6 @@ function CourseDetails(props: any) {
         console.log(error);
       });
   };
-  console.log(topic, "sandeep -----");
   const createPayment = async (status: Status, razorpay_payment_id: string) => {
     var payload = {
       couragementId: Courseid,
@@ -326,7 +325,6 @@ function CourseDetails(props: any) {
         console.log("Create MockTest Failed", error);
       });
   };
-  console.log(selectedSubjectId, "subject id selected");
   useFocusEffect(
     React.useCallback(() => {
       getCourseDetails(access_token);
@@ -335,7 +333,6 @@ function CourseDetails(props: any) {
   );
 
   const getTopicBySubjectId = async (id: any) => {
-    console.log(selectedSubjectId, "from function");
 
     const headers: any = {
       Authorization: `Bearer ${access_token}`,
@@ -345,7 +342,6 @@ function CourseDetails(props: any) {
         `${baseUrl}/api/services/app/Topics/GetTopicsBySubject?subjectId=${id}`,
         headers
       );
-      console.log("haihai", res.data.result);
 
       setTopicDropData(res.data.result);
     } catch (error) {

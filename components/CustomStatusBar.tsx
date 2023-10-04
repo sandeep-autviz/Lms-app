@@ -2,7 +2,6 @@ import { StatusBar, StatusBarProps, useColorScheme } from "react-native";
 import React from "react";
 
 interface StatusBarCustomProps extends StatusBarProps {
-  //   backgroundColor: string;
 }
 
 const StatusBarCustom: React.FC<StatusBarCustomProps> = ({

@@ -198,26 +198,6 @@ export default function PlayScreen(props: any) {
                           >
                             {item.subjectName}
                           </Text>
-                          {/* <View
-                            style={{
-                              flexDirection: "row",
-                              alignContent: "flex-end",
-                              alignItems: "flex-start",
-                              backgroundColor: "#FAFAFB",
-                            }}
-                          >
-                            <FontAwesome
-                              name="eye"
-                              size={10}
-                              style={{ top: high / 186.75, color: "#8A8A8A" }}
-                            />
-                            <Text
-                              allowFontScaling={false}
-                              style={styles.number}
-                            >
-                              16 Topic
-                            </Text>
-                          </View> */}
                         </View>
                         <Image
                           source={require("../assets/images/arow.png")}
@@ -278,26 +258,6 @@ export default function PlayScreen(props: any) {
                           >
                             {item.subjectName}
                           </Text>
-                          {/* <View
-                            style={{
-                              flexDirection: "row",
-                              alignContent: "flex-end",
-                              alignItems: "flex-start",
-                              backgroundColor: "#FAFAFB",
-                            }}
-                          >
-                            <FontAwesome
-                              name="eye"
-                              size={10}
-                              style={{ top: high / 186.75, color: "#8A8A8A" }}
-                            />
-                            <Text
-                              allowFontScaling={false}
-                              style={styles.number}
-                            >
-                              16 Topic
-                            </Text>
-                          </View> */}
                         </View>
                         <Image
                           source={require("../assets/images/arow.png")}
@@ -327,7 +287,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignSelf: "center",
     right: wid / 6.8,
-    // bottom: 15
   },
   number: {
     fontFamily: "Poppins-Regular",
@@ -372,7 +331,6 @@ const styles = StyleSheet.create({
 
   clearIcon: {
     position: "absolute",
-    // marginTop: high/113.86,
     right: "28%",
     bottom: 13,
     color: "#8A8A8A",
@@ -383,7 +341,6 @@ const styles = StyleSheet.create({
   },
   clearIcon2: {
     position: "absolute",
-    // marginTop: high/200.86,
     bottom: 13,
     color: "#8A8A8A",
     right: "27%",

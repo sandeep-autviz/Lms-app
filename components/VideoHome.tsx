@@ -19,7 +19,6 @@ import { generateBoxShadowStyle } from "../lib/generateBoxShadow";
 import { MyWebComponent } from "./MyWebComponent";
 
 export default function VideoHome(props: any) {
-  const [isVideoResume, setisVideoResume] = useState<boolean>(false);
   const { description, image, title, fileName, creationTime } = props.item;
   let detail = description + "";
   const [readMore, setReadMore] = useState(detail.length > 50 ? true : false);

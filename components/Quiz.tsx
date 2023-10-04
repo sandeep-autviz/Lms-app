@@ -1,5 +1,4 @@
-import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import {  useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {

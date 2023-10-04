@@ -4,7 +4,6 @@ import { StyleSheet, Image, Dimensions, View, Text } from "react-native";
 
 import RenderHtml from "react-native-render-html";
 import HtmlRenderWithMathTag from "./HtmlRenderWithMathTag";
-import { MathJaxSvg } from "react-native-mathjax-html-to-svg";
 const wid = Dimensions.get("screen").width;
 const high = Dimensions.get("screen").height;
 export default function AnswerOption(props: any) {
@@ -16,7 +15,6 @@ export default function AnswerOption(props: any) {
     () => ({
       fontFamily: "Poppins-Medium",
       color: "black",
-      // props.isSelected === "isSelected" ? "#FFFFFF" : "black",
     }),
     [props.isSelected]
   );
@@ -43,7 +41,6 @@ export default function AnswerOption(props: any) {
             style={{
               width: wid / 20,
               height: high / 40,
-              // marginRight: wid / 38.4,/
               backgroundColor: "#FAFAFB",
             }}
             resizeMode="cover"
@@ -69,9 +66,7 @@ export default function AnswerOption(props: any) {
           alignItems: "center",
           width: "86%",
           backgroundColor: "#FAFAFB",
-          // props.isSelected === "isSelected" ? "#319EAE" : "#FAFAFB",
           borderStyle: "dashed",
-          // borderColor: "#319EAE",
           borderColor:
             props.isSelected === "isSelected" ? "#319EAE" : "#C9C17F",
           borderWidth: 1.5,
@@ -94,18 +89,6 @@ export default function AnswerOption(props: any) {
               source={source}
             />
           )}
-
-          {/* <Text
-            allowFontScaling={false}
-            style={{
-              fontSize: 12,
-              color: props.isSelected === "isSelected" ? "#FFFFFF" : "black",
-              fontFamily: "Poppins-Medium",
-              backgroundColor: "transparent",
-            }}
-          >
-            {props.text}
-          </Text> */}
         </View>
       </View>
     </View>

@@ -220,7 +220,6 @@ export default function SignInPage(props: any) {
 
                 width: "80%",
                 alignSelf: "center",
-                // left: wid/12.8,
                 flexDirection: "row",
                 borderRadius: 5,
                 justifyContent: "center",

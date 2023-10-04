@@ -9,10 +9,6 @@ const high = Dimensions.get("window").height;
 export default function JobNotification(props: any) {
   const [jobData, SetJobData] = useState<any>([]);
 
-  function extractInnerText(htmlString: string) {
-    const strippedText = htmlString.replace(/<[^>]+>/g, "");
-    return strippedText;
-  }
 
   useEffect(() => {
     SecureStore.getItemAsync("access_token").then((value) => {

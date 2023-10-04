@@ -89,19 +89,7 @@ export default function EditProfile(props: any) {
       ) {
         console.log("Camera & storage permission given");
 
-        // var options: any = {
-        //   maxHeight: 200,
-        //   maxWidth: 200,
-        //   selectLimit: 1,
-        //   mediaType: "photo",
-        //   includeBase64: false,
-        // };
-        // var otherOptions: any = {
-        //   mediaTypes: " photo",
-        //   allowsEditing: true,
-        //   includeBase64: false,
-        //   quality: 1,
-        // };
+     
         let res: any = await DocumentPicker.getDocumentAsync({
           type: "image/*",
         });

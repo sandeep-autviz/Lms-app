@@ -11,7 +11,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import { RenderHTML } from "react-native-render-html";
 import ExplantionAnwersOption from "./modal/ExplantionAnwersOption";
 import HtmlRenderWithMathTag from "./HtmlRenderWithMathTag";
-import { MathJaxSvg } from "react-native-mathjax-html-to-svg";
 
 const high = Dimensions.get("window").height;
 const wid = Dimensions.get("window").width;
@@ -118,7 +117,6 @@ export default function ExplantionQuestions(props: any) {
                   <RenderHTML contentWidth={wid / 1.4} source={source} />
                 </View>
               )}
-              {/* <RenderHtml contentWidth={wid / 1.28} source={source} /> */}
             </View>
             <View style={{ backgroundColor: "#FAFAFB" }}>
               <View
@@ -215,7 +213,6 @@ export default function ExplantionQuestions(props: any) {
               </View>
 
               <View
-              // style={{ width: wid / 3 }}
               >
                 <TouchableOpacity
                   style={{
@@ -275,13 +272,11 @@ export default function ExplantionQuestions(props: any) {
                     { fontSize: 20, textAlign: "center" },
                   ]}
                 >
-                  {/* General Instructions */}
                   Explanation
                 </Text>
                 <View
                   style={{
                     alignSelf: "center",
-                    // marginTop: 10,
                     width: wid / 1.2,
                     flexDirection: "row",
                     backgroundColor: "#FAFAFB",

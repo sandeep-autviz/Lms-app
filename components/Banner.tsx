@@ -9,7 +9,6 @@ import {
 } from "react-native";
 
 import { generateBoxShadowStyle } from "../lib/generateBoxShadow";
-import { Linking } from "react-native";
 import {
   heightPercentageToDP,
   widthPercentageToDP,
@@ -17,7 +16,6 @@ import {
 import { useStateContext } from "../screens/Context/ContextProvider";
 import { baseUrl } from "../utils";
 import axios from "axios";
-import { useNavigation } from "@react-navigation/native";
 
 const wid = Dimensions.get("window").width;
 const high = Dimensions.get("window").height;
@@ -27,12 +25,7 @@ const Banner = ({ item, navigation, courseId }: any) => {
   const { access_token } = useStateContext();
   console.log(item, "full banner item");
 
-  function extractNumberFromURL(url: string) {
-    var regex = /\/(\d+)\//;
-    var match = url.match(regex);
-    return match ? parseInt(match[1]) : -1;
-  }
-  console.log(courseId, "this is he course id");
+
   async function fetchBannerData(token: any) {
     let payload = "";
     var config = {
@@ -139,7 +132,6 @@ const Banner = ({ item, navigation, courseId }: any) => {
           >
             <TouchableOpacity
               onPress={async () => {
-                // setCourseId(() => extractNumberFromURL(item.link));
 
                 fetchBannerData(access_token);
               }}

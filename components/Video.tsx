@@ -78,8 +78,6 @@ export default function VideoComponent(props: any) {
 
         <View style={{ padding: 0, margin: 0, backgroundColor: "#FAFAFB" }}>
           {description != null && (
-            //   {description && readMore === true ? detail.slice(0, 180) : detail}
-            // </Text>
             <RenderHtml contentWidth={wid} source={source} />
           )}
           {description != null && (

@@ -111,15 +111,10 @@ const VideoCard = (props: any) => {
 };
 const styles = StyleSheet.create({
   TextStyle: {
-    // marginTop: 2,
     paddingHorizontal: horizontalScale(13),
-    // top: 1,
     color: "#fafafa",
     opacity: 0.8,
-    // borderWidth: 1,
-    // borderRadius: 20,
     borderTopEndRadius: 25,
-    // borderRadiusTop: 20,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     backgroundColor: "#000000",
