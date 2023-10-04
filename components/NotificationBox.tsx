@@ -1,4 +1,4 @@
-import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { Dimensions, Linking, TouchableOpacity } from "react-native";
 import { Text, View } from "./Themed";
@@ -12,10 +12,10 @@ const high = Dimensions.get("window").height;
 export default function NotificationBox({ data }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
   function extractInnerText(htmlString: string) {
-    const strippedText = htmlString.replace(/<[^>]+>/g, "");
+    const strippedText = htmlString?.replace(/<[^>]+>/g, "");
     return strippedText;
   }
-  console.log(data.description.length, "dis length");
+  console.log(data?.description?.length, "dis length");
   return (
     <TouchableOpacity key={Math.random() * 100} style={styles.topicCntr}>
       <View
@@ -41,22 +41,8 @@ export default function NotificationBox({ data }) {
             {extractInnerText(data.description)}
           </Text>
         </Collapsible>
-        {/* <TouchableOpacity
-          onPress={() => setIsCollapsed((s) => !s)}
-          style={{
-            backgroundColor: "#319EAE",
-            borderRadius: 20,
-            marginBottom: 10,
-            marginTop: 10,
-            width: wid / 4,
-            height: high / 30,
-            alignItems: "center",
-            justifyContent: "center",
-            ...btnshadow,
-          }}
-        > */}
 
-        {data.description.length > 55 && (
+        {data?.description?.length > 55 && (
           <Text
             onPress={() => setIsCollapsed((s) => !s)}
             style={{ color: "black" }}

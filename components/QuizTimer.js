@@ -34,13 +34,11 @@ function QuizTimer({
     let seconds = parseInt(totalSeconds % 60);
     let minute = parseInt(totalMinute % 60);
     let hours = parseInt(totalHours % 24);
-    return ` ${hours}hr ${minute}min ${seconds}sec  `;
+    return ` ${hours}hr ${minute}min ${seconds}sec `;
   }
-
   return (
     <View>
       <View style={styles.container}>
-        <View></View>
         {duration !== "viewExpalanationPage" && (
           <View
             style={{
@@ -63,7 +61,6 @@ function QuizTimer({
             >
               <FontAwesome name="clock-o" size={30} />
             </View>
-
             <Text
               allowFontScaling={false}
               style={{
@@ -73,7 +70,9 @@ function QuizTimer({
                 backgroundColor: "#F3FBFC",
               }}
             >
+
               {getFormattedTime(time) && getFormattedTime(time)}
+
             </Text>
           </View>
         )}

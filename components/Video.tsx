@@ -8,7 +8,6 @@ import {
   Image,
 } from "react-native";
 
-import { Alert } from "react-native";
 import { trimDate, getVideoId } from "../utils/Logics";
 const wid = Dimensions.get("window").width;
 const high = Dimensions.get("window").height;
@@ -17,14 +16,7 @@ import { MyWebComponentFeed } from "./MyWebComponentFeed";
 export default function VideoComponent(props: any) {
   const { description, image, title, fileName, creationTime } = props.item;
   let detail = description + "";
-  const [playing, setPlaying] = useState(false);
-  const [fullScreen, setFullScreen] = useState(false);
-  const onStateChange = useCallback((state: any) => {
-    if (state === "ended") {
-      setPlaying(false);
-      Alert.alert("video has finished playing!");
-    }
-  }, []);
+
   const [readMore, setReadMore] = useState(detail.length > 50 ? true : false);
   const source = {
     html:
@@ -81,20 +73,11 @@ export default function VideoComponent(props: any) {
         </Text>
 
         <View>
-          {/* <YoutubeIframe
-            onFullScreenChange={onFullScreen}
-            height={high / 4}
-            webViewStyle={{ opacity: 0.99 }}
-            play={playing}
-            videoId={getVideoId(fileName)}
-            onChangeState={onStateChange}
-          /> */}
           <MyWebComponentFeed youtube={getVideoId(fileName)} />
         </View>
 
         <View style={{ padding: 0, margin: 0, backgroundColor: "#FAFAFB" }}>
           {description != null && (
-            // <Text allowFontScaling={false} style={styles.cardDesc}>
             //   {description && readMore === true ? detail.slice(0, 180) : detail}
             // </Text>
             <RenderHtml contentWidth={wid} source={source} />

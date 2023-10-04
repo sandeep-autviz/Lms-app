@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dimensions,
   FlatList,
@@ -44,13 +44,11 @@ function HomeScreen({ navigation }: any) {
   const [freeVideoData, setFreeVideoData] = useState<null | any[]>(null);
 
   useEffect(() => {
-    console.log("home screen loading");
     SecureStore.getItemAsync("access_token").then((value: any) => {
       if (value != null) {
         FeedData(value);
       }
     });
-
   }, []);
 
   const getUserImage = (access_token: string, userId: string) => {
@@ -60,7 +58,6 @@ function HomeScreen({ navigation }: any) {
         "Abp-TenantId": "1",
       },
     };
-
     return axios.get(
       `${baseUrl}/api/services/app/User/Get?Id=${userId}`,
       config
@@ -73,6 +70,7 @@ function HomeScreen({ navigation }: any) {
     var match = url.match(regex);
     return match ? parseInt(match[1]) : -1;
   }
+
   const getUserData = async (token: any) => {
     let config = {
       method: "get",
@@ -83,13 +81,12 @@ function HomeScreen({ navigation }: any) {
         Authorization: `Bearer ${token}`,
       },
     };
+
     try {
       const { data } = await axios.request(config);
-
       if (!data.result.user) {
         navigation.dispatch(StackActions.replace("SignIn"));
       }
-
       setUserDetail(data.result.user);
     } catch (error) {
       console.log(error);
@@ -144,7 +141,6 @@ function HomeScreen({ navigation }: any) {
       console.log(error, "upcomingDataResonse");
     }
   };
-
   const onGoingHybridCourse = async (access_token: string) => {
     try {
       const config = {
@@ -220,7 +216,6 @@ function HomeScreen({ navigation }: any) {
         getAllPromotions(),
         onGoingHybridCourse(access_token),
       ]);
-
       await SplashScreen.hideAsync().then((result) =>
         console.log(`SplashScreen.Hide() ${result}`)
       );
@@ -243,7 +238,6 @@ function HomeScreen({ navigation }: any) {
         console.log(`SplashScreen.Hider() ${result}`)
       );
 
-      console.log("Session End", error);
       Storage.removeItem(KEYS.ACCESS_TOKEN);
       Storage.removeItem(KEYS.USER_ID);
       navigation.dispatch(StackActions.replace("SignIn"));
@@ -255,14 +249,6 @@ function HomeScreen({ navigation }: any) {
     allData();
   }, [refresh]);
 
-  console.log(
-    allMockTestData,
-    "mocktest data",
-    hybridCourseData,
-    "hybrid data"
-  );
-  console.log("promotion", promotionData);
-  console.log("ongoingVideocourse", onGoingVideoCoures);
   return (
     <View style={{ flex: 1, backgroundColor: "#F7F7F7" }}>
       <>
@@ -340,6 +326,7 @@ function HomeScreen({ navigation }: any) {
                 >
                   Ongoing Mock Courses
                 </Text>
+
                 {allMockTestData ? (
                   <View
                     style={{
@@ -437,7 +424,9 @@ function HomeScreen({ navigation }: any) {
                   }}
                 >
                   <FlatList
-                    data={feedFullData.filter((item) => item.type == "Video")}
+                    data={feedFullData.filter(
+                      (item: any) => item.type == "Video"
+                    )}
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                     renderItem={({ item, index }) => (

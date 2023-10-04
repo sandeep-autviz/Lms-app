@@ -22,17 +22,6 @@ export default function VideoHome(props: any) {
   const [isVideoResume, setisVideoResume] = useState<boolean>(false);
   const { description, image, title, fileName, creationTime } = props.item;
   let detail = description + "";
-  const [playing, setPlaying] = useState(false);
-  const [fullScreen, setFullScreen] = useState(false);
-  const onStateChange = useCallback((state: any) => {
-    if (state === "ended") {
-      setPlaying(false);
-      Alert.alert("video has finished playing!");
-    }
-  }, []);
-  // const togglePlaying = useCallback(() => {
-  //   setPlaying((prev) => !prev);
-  // }, []);
   const [readMore, setReadMore] = useState(detail.length > 50 ? true : false);
   const source = {
     html:
@@ -89,15 +78,6 @@ export default function VideoHome(props: any) {
         {trimDate(creationTime)}
       </Text>
       <View>
-        {/* <YoutubeIframe
-          onFullScreenChange={onFullScreen}
-          height={high / 4}
-          webViewStyle={{ opacity: 0.99 }}
-          play={playing}
-          // videoId={getVideoId(fileName)}
-          videoId={"yQTtvK4X9qw"}
-          onChangeState={onStateChange}
-    /<> */}
         <MyWebComponent youtube={getVideoId(fileName)} />
       </View>
 

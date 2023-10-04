@@ -8,11 +8,10 @@ export const MyWebComponent = ({ youtube }) => {
       <WebView
         androidHardwareAccelerationDisabled
         useOnRenderProcessGone="true"
-        // androidLayerType="software"
         originWhitelist={["*"]}
         javaScriptEnabled={true}
-        mediaPlaybackRequiresUserAction={false} // Allows autoplay
-        allowsInlineMediaPlayback={true} // Allows video to play inline
+        mediaPlaybackRequiresUserAction={false} 
+        allowsInlineMediaPlayback={true} 
         useWebKit={true}
         allowsFullscreenVideo
         source={{

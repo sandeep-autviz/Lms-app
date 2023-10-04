@@ -1,4 +1,3 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
 import * as SecureStore from "expo-secure-store";
 
 import React, { Fragment, useEffect, useState } from "react";
@@ -7,7 +6,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  FlatList,
   Text,
   View,
 } from "react-native";
@@ -93,7 +91,6 @@ export default function FeedScreen(props: any) {
       }
     });
   };
-  const navigation = useRoute();
 
   useEffect(() => {
     filterData(currentState);

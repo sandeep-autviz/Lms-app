@@ -1,26 +1,13 @@
-import { AntDesign, FontAwesome } from "@expo/vector-icons";
-import Collapsible from "react-native-collapsible";
 import React, { useEffect, useState } from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  Dimensions,
-  Linking,
-  Text,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, Dimensions, View } from "react-native";
 import * as SecureStore from "expo-secure-store";
 import { baseUrl } from "../utils";
-import { trimDate } from "../utils/Logics";
-import { btnshadow } from "../components/EnrolledCourse";
 import NotificationBox from "../components/NotificationBox";
 
 const wid = Dimensions.get("window").width;
 const high = Dimensions.get("window").height;
 export default function JobNotification(props: any) {
   const [jobData, SetJobData] = useState<any>([]);
-  const [isCollapsed, setIsCollapsed] = useState(true);
 
   function extractInnerText(htmlString: string) {
     const strippedText = htmlString.replace(/<[^>]+>/g, "");
@@ -34,24 +21,6 @@ export default function JobNotification(props: any) {
       }
     });
   }, []);
-  const calcTime = (num1: string) => {
-    const slice1 = num1.slice(0, 10);
-
-    return slice1;
-  };
-  const calcTime1 = (num2: string) => {
-    const slice2 = num2.slice(0, 10);
-
-    return slice2;
-  };
-  const trimText = (desc: any) => {
-    let newDesc = desc.split(" ");
-    let res = "";
-    for (let i = 0; i <= 2; i++) {
-      res += newDesc[i] + " ";
-    }
-    return res + "...";
-  };
   const Jobnotification = async (token: any) => {
     var axios = require("axios");
     var data = "";
@@ -86,105 +55,7 @@ export default function JobNotification(props: any) {
       }}
     >
       {jobData.map((data: any, index: number) => {
-        return (
-          <NotificationBox data={data} key={index} />
-          // <TouchableOpacity
-          //   key={Math.random() * 100}
-          //   onPress={() => {
-          //     !data.link || data.link == null
-          //       ? alert("Link Not Available")
-          //       : Linking.openURL(data.link);
-          //   }}
-          //   style={styles.topicCntr}
-          // >
-          //   <View
-          //     style={{
-          //       alignSelf: "flex-start",
-          //       flexDirection: "column",
-          //       alignItems: "flex-start",
-          //       marginBottom: 1.5,
-          //       width: wid / 1.4,
-          //       backgroundColor: "transparent",
-          //     }}
-          //   >
-          //     <Text allowFontScaling={false} style={styles.cardText}>
-          //       {data.nameOfJob}
-          //     </Text>
-          //     <Text allowFontScaling={false} style={styles.number}>
-          //       {isCollapsed &&
-          //         data.description &&
-          //         extractInnerText(trimText(data.description))}
-          //     </Text>
-          //     <Collapsible collapsed={isCollapsed}>
-          //       <Text allowFontScaling={false} style={styles.number}>
-          //         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-          //         congue, nulla et imperdiet gravida, sem tellus rutrum tellus,
-          //         nec suscipit odio metus ac orci. Phasellus justo felis,
-          //         viverra vitae commodo semper, placerat nec sapien. In hac
-          //         habitasse platea dictumst. Nulla fermentum dui non mi
-          //         consequat interdum. Vivamus id nisl orci. Pellentesque
-          //         habitant morbi tristique senectus et netus et malesuada fames
-          //         ac turpis egestas. Morbi ac convallis purus. Sed eleifend
-          //         neque ut venenatis maximus. In interdum enim eu laoreet
-          //         aliquet. Pellentesque luctus rhoncus tincidunt. Vivamus non
-          //         malesuada dolor, pellentesque viverra ipsum. Pellentesque
-          //         posuere imperdiet eros eu volutpat. Etiam sit amet
-          //         pellentesque dui.
-          //       </Text>
-          //     </Collapsible>
-          //     <TouchableOpacity
-          //       onPress={() => setIsCollapsed((s) => !s)}
-          //       style={{
-          //         backgroundColor: "#319EAE",
-          //         borderRadius: 20,
-          //         width: wid / 4,
-          //         height: high / 30,
-          //         alignItems: "center",
-          //         justifyContent: "center",
-          //         ...btnshadow,
-          //       }}
-          //     >
-          //       <Text style={{ color: "white" }}>Read more</Text>
-          //     </TouchableOpacity>
-          //     <View
-          //       style={{
-          //         flexDirection: "row",
-          //         backgroundColor: "transparent",
-          //         alignItems: "center",
-          //         alignSelf: "flex-start",
-          //         marginTop: 1.5,
-          //       }}
-          //     >
-          //       <FontAwesome
-          //         name="eye"
-          //         size={10}
-          //         style={{ color: "#8A8A8A" }}
-          //       />
-          //       <Text
-          //         style={{
-          //           marginLeft: 5,
-          //           color: "#8A8A8A",
-          //           marginTop: 1.5,
-          //           backgroundColor: "transparent",
-          //         }}
-          //       >
-          //         {data.startDate && trimDate(data.startDate)}
-          //       </Text>
-          //       <Text
-          //         style={{
-          //           color: "#8A8A8A",
-          //           marginTop: 1.5,
-          //           marginLeft: 8,
-          //           backgroundColor: "transparent",
-          //         }}
-          //       >
-          //         {data.lastDate && trimDate(data.lastDate)}
-          //       </Text>
-          //     </View>
-          //   </View>
-          //   <AntDesign name="right" size={24} color="black" />
-          // </TouchableOpacity>
-        );
+        return <NotificationBox data={data} key={index} />;
       })}
     </ScrollView>
   );
